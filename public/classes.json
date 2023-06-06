@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/0f6G8Qq/karate.jpg",
+      "name": "Karate Class",
+      "instructor": "John Doe",
+      "availableSeats": 10,
+      "price": 99.99
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/gZBqQD4/taekwondo.jpg",
+      "name": "Taekwondo Class",
+      "instructor": "Jane Smith",
+      "availableSeats": 0,
+      "price": 79.99
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/D1X6zNx/jiu-jitsu.jpg",
+      "name": "Jiu-Jitsu Class",
+      "instructor": "Mike Johnson",
+      "availableSeats": 8,
+      "price": 109.99
+    },
+    {
+        "id": 4,
+        "image": "https://i.ibb.co/kBFw9Hp/boxing.jpg",
+        "name": "Kickboxing Class",
+        "instructor": "Sarah Davis",
+        "availableSeats": 12,
+        "price": 89.99
+      },
+      {
+        "id": 5,
+        "image": "https://i.ibb.co/FqpnPs8/kung-fu.jpg",
+        "name": "Kung Fu Class",
+        "instructor": "Michael Chen",
+        "availableSeats": 0,
+        "price": 94.99
+      },
+      {
+        "id": 6,
+        "image": "https://i.ibb.co/bNW9WHY/muay-thai.jpg",
+        "name": "Muay Thai Class",
+        "instructor": "David Wilson",
+        "availableSeats": 15,
+        "price": 109.99
+      }
+  ]
+  
+  
+  
+  
+  
+  
+  
+  
