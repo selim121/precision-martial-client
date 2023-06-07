@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
+import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/InstructorHome";
 
   const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
             {
                 path: 'all-users',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'instructor-home',
+                element: <InstructorHome></InstructorHome>
             },
             {
                 path: 'student-home',

@@ -44,8 +44,7 @@ const SignIn = () => {
     // google sign in
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-          .then(result => {
-            console.log(result.user)
+          .then(() => {
             navigate(from, { replace: true })
           })
           .catch(err => {

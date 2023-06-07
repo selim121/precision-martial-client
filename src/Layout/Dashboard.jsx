@@ -9,6 +9,8 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import { useState } from "react";
 import useAdmin from "../hooks/useAdmin";
 import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
+import useInstructor from "../hooks/useInstructor";
+import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/InstructorHome";
 
 const Dashboard = () => {
 
@@ -21,6 +23,7 @@ const Dashboard = () => {
     };
 
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor()
 
     return (
         <>
@@ -58,7 +61,7 @@ const Dashboard = () => {
             </div>
 
             {
-                isAdmin && isAdmin ? <div className="drawer lg:drawer-open pt-24">
+                isAdmin ? <div className="drawer lg:drawer-open pt-24">
                     <input id="menu" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content px-5 mt-5 w-full lg:w-4/5 absolute right-0">
                         {
@@ -97,7 +100,36 @@ const Dashboard = () => {
 
                     :
 
-                    <div className="drawer lg:drawer-open pt-24">
+                    isInstructor ? <div className="drawer lg:drawer-open pt-24">
+                    <input id="menu" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content px-10 mt-5 w-full lg:w-4/5 absolute right-0">
+                        {
+                            selectedComponent === 'home' && <InstructorHome></InstructorHome>
+                        }
+
+
+                    </div>
+                    <div className="drawer-side">
+                        <label htmlFor="menu" className="drawer-overlay"></label>
+                        <ul className="menu p-4 w-60 lg:w-60 h-full lg:fixed mt-24 lg:mt-0 bg-[#dc034158] text-base-content">
+                            <div className="text-center py-4 mb-4 border-b-4 border-[#E80040]">
+                                <h1 className="text-3xl uppercase font-bold tracking-[3px]">Instructor</h1>
+                            </div>
+                            <Link to={'/dashboard/instructor-home'}>
+                                <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'home' ? 'bg-base-200 opacity-70' : ''}`}
+                                    onClick={() => handleComponentSelection('home')}>
+                                    <AiFillHome size={'20'} color="#E80040" />
+                                    <p className="text-xl hover:text-[#E80040]">Home</p>
+                                </div>
+                            </Link>
+                        </ul>
+
+                    </div>
+                </div>
+
+                :
+
+                <div className="drawer lg:drawer-open pt-24">
                         <input id="menu" type="checkbox" className="drawer-toggle" />
                         <div className="drawer-content px-5 mt-5 w-full lg:w-4/5 absolute right-0">
                             {

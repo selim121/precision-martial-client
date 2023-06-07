@@ -2,15 +2,14 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import emptyProfile from '../../../assets/images/empty-profile.jpeg';
 import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
-import useAuth from '../../../hooks/useAuth'
-const Search = () => {
+import useAuth from '../../../hooks/useAuth';
+
+const NavItems = () => {
     const { user, logOut } = useAuth();
     const [isOpen, setIsOpen] = useState(false)
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
     }, [])
-
-    console.log(user);
 
     return (
         <div className='relative me-5'>
@@ -19,7 +18,7 @@ const Search = () => {
                 <Link className='hidden md:block' to={'/instructors'}>Instructors</Link>
                 <Link className='hidden md:block' to={'/classes'}>Classes</Link>
                 {
-                    user?.email && <Link className='hidden md:block' to={user.role === 'admin' ? '/dashboard/admin-home' : '/dashboard/student-home' }>Dashboard</Link>
+                    user?.email && <Link className='hidden md:block' to={'/dashboard'}>Dashboard</Link>
                 }
                 <div
                     onClick={toggleOpen}
@@ -108,4 +107,4 @@ const Search = () => {
     )
 }
 
-export default Search
+export default NavItems;
