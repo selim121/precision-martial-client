@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co/bNCJqzC/john.jpg",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "numberOfClassesTaken": 5,
+      "classesTaken": ["Karate", "Kickboxing", "Jiu-Jitsu"]
+     },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co/9rsL3w3/jane.jpg",
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "numberOfClassesTaken": 8,
+      "classesTaken": ["Taekwondo", "Muay Thai", "Boxing"]
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co/XfQH1q2/mike.jpg",
+      "name": "Mike Johnson",
+      "email": "mikejohnson@example.com",
+      "numberOfClassesTaken": 3,
+      "classesTaken": ["Krav Maga", "Wing Chun", "Capoeira"]
+    },
+    {
+        "id": 4,
+        "image": "https://i.ibb.co/2hNBfk3/sarah.jpg",
+        "name": "Sarah Davis",
+        "email": "sarahdavis@example.com",
+        "numberOfClassesTaken": 10,
+        "classesTaken": ["Krav Maga", "Boxing", "Muay Thai"]
+      },
+      {
+        "id": 5,
+        "image": "https://i.ibb.co/YNWTcyN/michael.jpg",
+        "name": "Michael Chen",
+        "email": "michaelchen@example.com",
+        "numberOfClassesTaken": 6,
+        "classesTaken": ["Karate", "Judo", "Wing Chun"]
+      },
+      {
+        "id": 6,
+        "image": "https://i.ibb.co/cN25gNh/david.jpg",
+        "name": "David Wilson",
+        "email": "davidwilson@example.com",
+        "numberOfClassesTaken": 4,
+        "classesTaken": ["Taekwondo", "Kickboxing", "Capoeira"]
+      }
+  ]
+  
+  
+
+
+
+

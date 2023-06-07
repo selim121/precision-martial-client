@@ -19,7 +19,7 @@ const ClassCard = ({ cls }) => {
                         <p className="font-semibold">Available Seat: <span className="text-[#E80040]">{availableSeats}</span></p>
                         <p className="font-semibold">Instructor: {instructor}</p>
                         <div className="text-center">
-                            <button className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]">Buy Now</button>
+                            <button className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]">Enroll Now</button>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ const ClassCard = ({ cls }) => {
                             <p className="font-semibold">Available Seat: <span className="text-[#E80040]">{availableSeats}</span></p>
                             <p className="font-semibold">Instructor: {instructor}</p>
                             <div className="text-center">
-                                <button disabled className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]">Buy Now</button>
+                                <button disabled className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]">Enroll Now</button>
                             </div>
                         </div>
                     </div>
