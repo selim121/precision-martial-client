@@ -21,17 +21,16 @@ const SignIn = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        // Handle form submission
         console.log(data);
     };
 
     const handleGoogleSignIn = () => {
-        // Handle Google sign-in functionality
+
     };
 
     return (
         <div
-            className="flex items-center justify-center md:justify-start md:ps-8 min-h-screen bg-cover"
+            className="grid grid-cols-1 md:grid-cols-2 items-center justify-center md:justify-start md:ps-8 min-h-screen bg-cover"
             style={{
                 backgroundImage: `url(${login})`,
                 backgroundSize: "cover",
@@ -39,7 +38,7 @@ const SignIn = () => {
             }}
 
         >
-            <div className="w-96 p-8 bg-white rounded-lg shadow-xl">
+            <div className="w-full p-8 bg-white rounded-lg shadow-xl">
                 <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text" >Precision Martial</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-4">

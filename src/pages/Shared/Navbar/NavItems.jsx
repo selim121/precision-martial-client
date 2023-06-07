@@ -48,13 +48,13 @@ const Search = () => {
                             Sign out
                         </div>
                         <Link
-                            to='/login'
+                            to='/sign-in'
                             className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                         >
                             Sign in
                         </Link>
                         <Link
-                            to='/signup'
+                            to='/sign-up'
                             className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                         >
                             Sign Up
