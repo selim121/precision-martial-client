@@ -14,7 +14,7 @@ const SignUp = () => {
         formState: { errors },
     } = useForm();
 
-    const { setLoading, createUser, updateUserProfile } = useAuth();
+    const { setLoading, createUser, updateUserProfile, signInWithGoogle } = useAuth();
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
@@ -31,6 +31,8 @@ const SignUp = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
 
+
+    // user sign up
     const onSubmit = (data) => {
         console.log(data.photo[0]);
         const image = data.photo[0];
@@ -72,9 +74,19 @@ const SignUp = () => {
             })
     };
 
+    // google sign in
     const handleGoogleSignIn = () => {
-
-    };
+        signInWithGoogle()
+          .then(result => {
+            console.log(result.user)
+            navigate(from, { replace: true })
+          })
+          .catch(err => {
+            setLoading(false)
+            console.log(err.message)
+            toast.error(err.message)
+          })
+      }
 
     return (
         <div

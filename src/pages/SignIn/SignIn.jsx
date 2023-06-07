@@ -2,12 +2,19 @@
 import { useForm } from "react-hook-form";
 import login from "../../assets/images/background/login.png";
 import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const SignIn = () => {
 
     const [showPassword, setShowPassword] = useState(false);
+    const { setLoading, signIn, signInWithGoogle, resetPassword } = useAuth();
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const emailRef = useRef()
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -20,13 +27,48 @@ const SignIn = () => {
         formState: { errors },
     } = useForm();
 
+    // user sign in
     const onSubmit = (data) => {
-        console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+          console.log(result.user)
+          navigate(from, { replace: true })
+        })
+        .catch(err => {
+          setLoading(false)
+          console.log(err.message)
+          toast.error(err.message)
+        })
     };
 
+    // google sign in
     const handleGoogleSignIn = () => {
+        signInWithGoogle()
+          .then(result => {
+            console.log(result.user)
+            navigate(from, { replace: true })
+          })
+          .catch(err => {
+            setLoading(false)
+            console.log(err.message)
+            toast.error(err.message)
+          })
+      }
 
-    };
+      const handleReset = () => {
+        const email = emailRef.current.value
+    
+        resetPassword(email)
+          .then(() => {
+            toast.success('Please check your email for reset link')
+            setLoading(false)
+          })
+          .catch(err => {
+            setLoading(false)
+            console.log(err.message)
+            toast.error(err.message)
+          })
+      }
 
     return (
         <div
@@ -87,9 +129,9 @@ const SignIn = () => {
                         )}
                     </div>
                     <div className="flex items-center justify-between mb-4">
-                        <a href="#" className="text-sm text-gray-600">
+                        <button onClick={handleReset} className="text-sm text-gray-600">
                             Forgotten password?
-                        </a>
+                        </button>
                         <button
                             type="submit"
                             className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]"
