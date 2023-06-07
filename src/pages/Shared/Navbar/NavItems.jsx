@@ -18,7 +18,9 @@ const Search = () => {
                 <Link className='hidden md:block' to={'/'}>Home</Link>
                 <Link className='hidden md:block' to={'/instructors'}>Instructors</Link>
                 <Link className='hidden md:block' to={'/classes'}>Classes</Link>
-                <Link className='hidden md:block' to={'/dashboard'}>Dashboard</Link>
+                {
+                    user?.email && <Link className='hidden md:block' to={user.role === 'admin' ? '/dashboard/admin-home' : '/dashboard/student-home' }>Dashboard</Link>
+                }
                 <div
                     onClick={toggleOpen}
                     className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
@@ -57,12 +59,14 @@ const Search = () => {
                             >
                                 Classes
                             </Link>
-                            <Link
-                                to='/dashboard'
-                                className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                            >
-                                Dashboard
-                            </Link>
+                            {
+                                user?.email && <Link
+                                    to='/dashboard'
+                                    className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                >
+                                    Dashboard
+                                </Link>
+                            }
                             {
                                 user?.email ? <>
                                     <Link

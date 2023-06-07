@@ -9,6 +9,7 @@ import UserProfile from "../pages/UserProfile/UserProfile";
 import Dashboard from "../Layout/Dashboard";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
 
   const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
             {
                 path: 'all-users',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'student-home',
+                element: <StudentHome></StudentHome>
             }
         ]
     }
