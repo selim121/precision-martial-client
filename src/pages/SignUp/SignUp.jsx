@@ -1,26 +1,75 @@
 import login from "../../assets/images/background/login.png";
 import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
     } = useForm();
 
-    const passwordRef = useRef(null);
+    const { setLoading, createUser, updateUserProfile } = useAuth();
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
+    const password = watch('password');
 
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
 
     const onSubmit = (data) => {
-        console.log(data);
+        console.log(data.photo[0]);
+        const image = data.photo[0];
+        const formData = new FormData()
+        formData.append('image', image)
+
+        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_Token
+            }`
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+        })
+            .then(res => res.json())
+            .then((imageData) => {
+                const imageUrl = imageData.data.display_url
+                createUser(data.email, data.password)
+                    .then(() => {
+                        updateUserProfile(name, imageUrl)
+                            .then(() => {
+                                toast.success('Signup successful')
+                                navigate(from, { replace: true })
+                            })
+                            .catch(err => {
+                                setLoading(false)
+                                console.log(err.message)
+                                toast.error(err.message)
+                            })
+                    })
+                    .catch(err => {
+                        setLoading(false)
+                        console.log(err.message)
+                        toast.error(err.message)
+                    })
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                toast.error(err.message)
+            })
     };
 
     const handleGoogleSignIn = () => {
@@ -85,7 +134,7 @@ const SignUp = () => {
 
                             <div className="relative">
                                 <input
-                                    type="password"
+                                    type={showPassword ? "text" : "password"}
                                     id="password"
                                     className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
                                         }`}
@@ -114,23 +163,27 @@ const SignUp = () => {
 
                             <div className="relative">
                                 <input
-                                    type="password"
+                                    type={showConfirmPassword ? "text" : "password"}
                                     id="confirmPassword"
                                     className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
                                         }`}
                                     placeholder="Enter your password"
                                     {...register("confirmPassword", {
                                         required: "Confirm Password is required", validate: (value) =>
-                                            value === passwordRef.current.value || "Passwords do not match",
+                                            value === password || "Passwords do not match",
                                     })}
                                 />
                                 <button
                                     type="button"
-                                    onClick={togglePasswordVisibility}
+                                    onClick={toggleConfirmPasswordVisibility}
                                     className="absolute top-2 right-2 focus:outline-none"
                                 >
-                                    {showPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
+                                    {showConfirmPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
                                 </button>
+
+                                {errors.confirmPassword && (
+                                    <p className="text-red-500">{errors.confirmPassword.message}</p>
+                                )}
                             </div>
 
 
@@ -161,7 +214,7 @@ const SignUp = () => {
                                 {...register("phoneNumber", {
                                     required: "Phone Number is required",
                                     pattern: {
-                                        value: /^[0-9]{10}$/,
+                                        value: /^[0-9]{11}$/,
                                         message: "Invalid phone number",
                                     },
                                 })}
