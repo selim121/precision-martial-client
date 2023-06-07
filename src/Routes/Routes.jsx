@@ -6,6 +6,9 @@ import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import UserProfile from "../pages/UserProfile/UserProfile";
+import Dashboard from "../Layout/Dashboard";
+import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +30,20 @@ import UserProfile from "../pages/UserProfile/UserProfile";
             {
                 path: 'profile',
                 element: <UserProfile></UserProfile>
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'admin-home',
+                element: <AdminHome></AdminHome>
+            },
+            {
+                path: 'all-users',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

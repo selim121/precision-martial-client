@@ -34,7 +34,6 @@ const SignUp = () => {
 
     // user sign up
     const onSubmit = (data) => {
-        console.log(data.photo[0]);
         const image = data.photo[0];
         const formData = new FormData()
         formData.append('image', image)
@@ -47,10 +46,27 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then((imageData) => {
-                const imageUrl = imageData.data.display_url
+                const imageUrl = imageData.data.display_url;
+                const { name, email, password, confirmPassword, gender, phoneNumber } = data;
+                const newUser = { name, email, password, confirmPassword, gender, phoneNumber, photo: imageUrl }
+
+                fetch('http://localhost:4000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            toast.success('Successfully SIgn Up');
+                        }
+                    })
+
                 createUser(data.email, data.password)
                     .then(() => {
-                        updateUserProfile(name, imageUrl)
+                        updateUserProfile(data.name, imageUrl)
                             .then(() => {
                                 toast.success('Signup successful')
                                 navigate(from, { replace: true })
@@ -77,16 +93,16 @@ const SignUp = () => {
     // google sign in
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-          .then(result => {
-            console.log(result.user)
-            navigate(from, { replace: true })
-          })
-          .catch(err => {
-            setLoading(false)
-            console.log(err.message)
-            toast.error(err.message)
-          })
-      }
+            .then(result => {
+                console.log(result.user)
+                navigate(from, { replace: true })
+            })
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                toast.error(err.message)
+            })
+    }
 
     return (
         <div
