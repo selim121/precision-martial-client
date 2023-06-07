@@ -45,13 +45,13 @@ const Search = () => {
                         <div
                             className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
                         >
-                            Logout
+                            Sign out
                         </div>
                         <Link
                             to='/login'
                             className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                         >
-                            Login
+                            Sign in
                         </Link>
                         <Link
                             to='/signup'
