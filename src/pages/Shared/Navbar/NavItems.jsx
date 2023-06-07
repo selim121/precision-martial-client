@@ -1,9 +1,10 @@
 import { AiOutlineMenu } from 'react-icons/ai'
+import emptyProfile from '../../../assets/images/empty-profile.jpeg';
 import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 const Search = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     const [isOpen, setIsOpen] = useState(false)
     const toggleOpen = useCallback(() => {
         setIsOpen(value => !value)
@@ -23,7 +24,7 @@ const Search = () => {
                     <div className=''>
                         <img
                             className='rounded-full'
-                            src={user && user.photoURL ? user.photoURL : ''}
+                            src={user && user.photoURL ? user.photoURL : emptyProfile}
                             alt='profile'
                             height='30'
                             width='30'
@@ -62,6 +63,7 @@ const Search = () => {
                                         Profile
                                     </Link>
                                     <div
+                                        onClick={logOut}
                                         className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
                                     >
                                         Sign out
