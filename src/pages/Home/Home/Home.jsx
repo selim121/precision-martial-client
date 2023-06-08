@@ -1,15 +1,15 @@
-import Classes from "../Classes/Classes";
 import Header from "../Header/Header";
-import Instructors from "../Instructors/Instructors";
 import WelcomePage from "../WelcomePage/WelcomePage";
+import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularInstructors from "../PopularInstructors/PopularInstructors";
 
 const Home = () => {
     return (
         <>
             <Header></Header>
             <WelcomePage></WelcomePage>
-            <Classes></Classes>
-            <Instructors></Instructors>
+            <PopularClasses></PopularClasses>
+            <PopularInstructors></PopularInstructors>
         </>
     );
 };

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import './Classes.css';
-import ClassCard from "./ClassCard";
+import './PopularClasses.css';
+import PopularClassCard from "./PopularClassCard";
 
-const Classes = () => {
+const PopularClasses = () => {
 
     const [classes, setClasses] = useState();
 
@@ -23,16 +23,16 @@ const Classes = () => {
                 heading='Popular Classes'
                 paragraph='Join our martial art club and be healthy'
             ></SectionTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12 mt-8">
                 {
-                    classes && classes.map(cls => <ClassCard
+                    classes && classes.map(cls => <PopularClassCard
                         key={cls.id}
                         cls={cls}
-                        ></ClassCard>)
+                        ></PopularClassCard>)
                 }
             </div>
         </div>
     );
 };
 
-export default Classes;
+export default PopularClasses;

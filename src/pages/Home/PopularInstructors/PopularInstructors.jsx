@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import InstructorCard from "./InstructorCard";
+import PopularInstructorCard from "./PopularInstructorCard";
 
-const Instructors = () => {
+const PopularInstructors = () => {
 
     const [instructors, setInstructors] = useState();
 
@@ -22,16 +22,16 @@ const Instructors = () => {
                 paragraph={'Join our Precision Martial and be healthy'}
             ></SectionTitle>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 my-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12">
                 {
-                    instructors && instructors.map(instructor => <InstructorCard
+                    instructors && instructors.map(instructor => <PopularInstructorCard
                         key={instructor.id}
                         instructor={instructor}
-                    ></InstructorCard>)
+                    ></PopularInstructorCard>)
                 }
             </div>
         </div>
     );
 };
 
-export default Instructors;
+export default PopularInstructors;
