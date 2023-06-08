@@ -4,8 +4,8 @@ import sadImg from '../../../../assets/images/others/sad.png';
 import useAuth from "../../../../hooks/useAuth";
 
 const MyClasses = () => {
-    
-    const {user} = useAuth();
+
+    const { user } = useAuth();
 
     const { data: myClasses = [] } = useQuery(['myClasses'], async () => {
         const res = await fetch(`http://localhost:4000/classes/${user?.email}`);
@@ -27,7 +27,17 @@ const MyClasses = () => {
                             <h1 className="text-4xl font-semibold uppercase">{myClass.className}</h1>
                             <p className="py-2">Available seats: {myClass.seats}</p>
                             <p className="py-1">Total Enrolled: 0</p>
-                            <h3 className="text-xl font-semibold">Status: <span className={myClass.status === 'approved' ? 'font-light text-green-700' : 'font-light text-orange-400'}>{myClass.status === 'approved' ? 'approved' : 'pending'}</span></h3>
+
+                            <h3 className="text-xl font-semibold">Status: <span className=
+                                {
+                                    myClass.status === 'approved' ? 'font-light text-green-700' : myClass.status === 'deny' ? 'font-light text-red-600' : 'font-light text-orange-400'
+                                }
+                            >
+                                {
+                                    myClass.status === 'approved' ? 'Approved' : myClass.status === 'deny' ? 'Denied' : 'Pending'
+                                }
+                            </span></h3>
+
                             <button className="bg-[#E80040] px-2 py-1 rounded-md text-white hover:opacity-30 mt-2">Update</button>
                         </div>
                         {/* TODO:Feedback implement */}
