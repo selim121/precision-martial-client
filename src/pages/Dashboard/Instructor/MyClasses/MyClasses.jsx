@@ -27,8 +27,8 @@ const MyClasses = () => {
                             <h1 className="text-4xl font-semibold uppercase">{myClass.className}</h1>
                             <p className="py-2">Available seats: {myClass.seats}</p>
                             <p className="py-1">Total Enrolled: 0</p>
-                            <p className="my-3 p-2 bg-white text-orange-400 rounded-md">Pending...</p>
-                            <button className="bg-[#E80040] px-2 py-1 rounded-md text-white hover:opacity-30">Update</button>
+                            <h3 className="text-xl font-semibold">Status: <span className={myClass.status === 'approved' ? 'font-light text-green-700' : 'font-light text-orange-400'}>{myClass.status === 'approved' ? 'approved' : 'pending'}</span></h3>
+                            <button className="bg-[#E80040] px-2 py-1 rounded-md text-white hover:opacity-30 mt-2">Update</button>
                         </div>
                         {/* TODO:Feedback implement */}
                         <div className="mx-auto text-center d-none">

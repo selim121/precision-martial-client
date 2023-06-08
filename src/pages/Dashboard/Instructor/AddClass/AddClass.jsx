@@ -4,10 +4,12 @@ import useAuth from "../../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 const AddClass = () => {
 
     const { user, setLoading } = useAuth();
+    const navigate = useNavigate();
 
     const { data: profile = [] } = useQuery(['profile'], async () => {
         const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
@@ -48,6 +50,7 @@ const AddClass = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
+                            navigate('/dashboard/my-classes')
                             reset();
                             Swal.fire({
                                 position: 'top-end',
