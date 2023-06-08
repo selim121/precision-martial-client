@@ -2,10 +2,21 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import sadImg from '../../../../assets/images/others/sad.png';
 import useAuth from "../../../../hooks/useAuth";
+// import Swal from 'sweetalert2'
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const MyClasses = () => {
 
     const { user } = useAuth();
+    const [showModal, setShowModal] = useState(false);
+
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = data => {
+        console.log(data);
+    }
+
 
     const { data: myClasses = [] } = useQuery(['myClasses'], async () => {
         const res = await fetch(`http://localhost:4000/classes/${user?.email}`);
@@ -38,7 +49,84 @@ const MyClasses = () => {
                                 }
                             </span></h3>
 
-                            <button className="bg-[#E80040] px-2 py-1 rounded-md text-white hover:opacity-30 mt-2">Update</button>
+                            <button
+                                className="bg-blue-200 text-black active:bg-blue-500 
+      font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mt-3"
+                                type="button"
+                                onClick={() => setShowModal(true)}
+                            >
+                                Update
+                            </button>
+                            {showModal ? (
+                                <>
+                                    <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
+                                                    <h3 className="text-3xl font=semibold">Update your class</h3>
+                                                    <button
+                                                        className="bg-transparent border-0 text-black float-right"
+                                                        onClick={() => setShowModal(false)}
+                                                    >
+                                                        <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full">
+                                                            x
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <div className="relative p-6 flex-auto">
+                                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                                        <div className="grid grid-cols-1 md:grid-cols-2">
+                                                            <div className="form-control me-4">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Instructor Name</span>
+                                                                </label>
+                                                                <input type="text" className="input input-bordered" {...register("name", { required: true })} />
+                                                            </div>
+                                                            <div className="form-control">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Instructor Email</span>
+                                                                </label>
+                                                                <input type="email" className="input input-bordered" {...register("email", { required: true })} />
+                                                            </div>
+                                                        </div>
+                                                        <div className="grid grid-cols-1 md:grid-cols-2">
+                                                            <div className="form-control me-4">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Class Name</span>
+                                                                </label>
+                                                                <input type="text" placeholder="Class name" className="input input-bordered" {...register("className", { required: true })} />
+                                                            </div>
+                                                            <div className="form-control">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Class Image</span>
+                                                                </label>
+                                                                <input type="file" id="photo" {...register("photo")} />
+                                                            </div>
+                                                        </div>
+                                                        <div className="grid grid-cols-1 md:grid-cols-2">
+                                                            <div className="form-control me-4">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Price</span>
+                                                                </label>
+                                                                <input type="text" placeholder="Enter price" className="input input-bordered" {...register("price", { required: true })} />
+                                                            </div>
+                                                            <div className="form-control me-4">
+                                                                <label className="label">
+                                                                    <span className="label-text font-semibold">Available Seats</span>
+                                                                </label>
+                                                                <input type="text" placeholder="Available seats" className="input input-bordered" {...register("seats", { required: true })} />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-control mt-4">
+                                                            <input className="py-3 uppercase font-bold text-xl rounded-xl border-0 mt-2 bg-[#dc034158] cursor-pointer" type="submit" value="Save" />
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                            ) : null}
                         </div>
                         {/* TODO:Feedback implement */}
                         <div className="mx-auto text-center d-none">

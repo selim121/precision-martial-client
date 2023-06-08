@@ -14,6 +14,7 @@ import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/Instruc
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import ClassUpdate from "../pages/Dashboard/Instructor/MyClasses/ClassUpdate";
 
   const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses"
             {
                 path: 'my-classes',
                 element: <MyClasses></MyClasses>
+            },
+            {
+                path: 'update-class',
+                element: <ClassUpdate></ClassUpdate>
             },
             {
                 path: 'student-home',

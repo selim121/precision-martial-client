@@ -14,7 +14,6 @@ const InstructorHome = () => {
     });
 
     const { name, email, gender, phoneNumber, photo } = profile;
-    console.log(profile);
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-center gap-10">
