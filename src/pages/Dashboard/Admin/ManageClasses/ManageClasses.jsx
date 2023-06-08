@@ -1,7 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
+
 
 const ManageClasses = () => {
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectClass, setSelectClass] = useState(null);
+    const { register, handleSubmit, reset } = useForm();
 
     const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
         const res = await fetch('http://localhost:4000/classes');
@@ -30,6 +38,65 @@ const ManageClasses = () => {
                 }
             })
     }
+
+    const handleFeedback = id => {
+        setSelectClass(id);
+        setShowModal(true);
+    }
+
+
+
+    const handleUpdate = data => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, send it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/classes/${selectClass}/feedback`, {
+                    method: 'PUT',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount > 0) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Feedback Send Successfully',
+                                icon: 'Success',
+                                confirmButtonText: 'Ok'
+                            })
+                            reset();
+                            setShowModal(false);
+                        }
+                    })
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+              )
+            }
+          })
+          
+        
+    };
+
 
     return (
         <div>
@@ -74,7 +141,30 @@ const ManageClasses = () => {
                                         <button onClick={() => handleDeny(allClass)} className="px-2 py-3 bg-red-500 rounded-md text-white hover:opacity-40">Deny</button>
                                 }
 
-                                <button className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Feedback</button>
+                                <button onClick={() => handleFeedback(allClass._id)} className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Send Feedback</button>
+
+                                {showModal ? (
+                                    <>
+                                        <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                    <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                                                        <h3 className="text-3xl font=semibold">Your Feedback</h3>
+                                                    </div>
+                                                    <div className="relative p-6 flex-auto">
+                                                        <form onSubmit={handleSubmit(handleUpdate)} className="bg-gray-200 shadow-md rounded px-8 pt-6 pb-2 w-full">
+                                                            <textarea placeholder="Write here..." className="textarea textarea-bordered textarea-lg w-full max-w-xs" {...register("feedback")} ></textarea>
+                                                            <div className="flex justify-center">
+                                                                <input className="cursor-pointer mt-3 px-5 py-3 bg-cyan-500 rounded-md text-white" type="submit" value="SEND" />
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : null}
+
                             </div>
                         </div>
                     </div>)
