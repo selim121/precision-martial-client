@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
-const PopularClassCard = ({ cls }) => {
+
+const ClassCard = ({ cls }) => {
 
     const { photo, name, className, seats, price } = cls;
 
@@ -65,4 +66,4 @@ const PopularClassCard = ({ cls }) => {
     );
 };
 
-export default PopularClassCard;
+export default ClassCard;

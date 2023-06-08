@@ -6,7 +6,7 @@ import { AiOutlineMail } from "react-icons/ai";
 
 const PopularInstructorCard = ({ instructor }) => {
 
-    const { image, name, email, numberOfClassesTaken, classesTaken } = instructor;
+    const { image, name, email, numberOfClassesTaken } = instructor;
 
     return (
         <>
@@ -31,7 +31,7 @@ const PopularInstructorCard = ({ instructor }) => {
                         <hr />
                         <div className="mt-3 flex flex-col items-center justify-center">
                             <p className="my-2 font-light">Total Classes: {numberOfClassesTaken}</p>
-                            <button className="hover:text-[#E80040] uppercase hover:border px-4 py-2 rounded-md hover:bg-white bg-[#E80040] border-[#E80040] text-white font-bold">See Classes</button>
+                            <button className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">See Classes</button>
                         </div>
                     </div>
                 </div>

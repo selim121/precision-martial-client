@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import './PopularClasses.css';
 import PopularClassCard from "./PopularClassCard";
 
 const PopularClasses = () => {
 
-    const [classes, setClasses] = useState();
-
-    useEffect(() => {
-        fetch('classes.json')
-            .then(res => res.json())
-            .then(data => {
-                setClasses(data);
-            })
-    }, [])
-
+    const { data: classes = [] } = useQuery(['classes'], async () => {
+        const res = await fetch('http://localhost:4000/classes');
+        return res.json();
+    });
 
 
     return (
@@ -28,7 +22,7 @@ const PopularClasses = () => {
                     classes && classes.map(cls => <PopularClassCard
                         key={cls.id}
                         cls={cls}
-                        ></PopularClassCard>)
+                    ></PopularClassCard>)
                 }
             </div>
         </div>

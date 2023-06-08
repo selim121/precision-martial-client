@@ -13,11 +13,11 @@ const Instructors = () => {
         <>
             <div className="hero h-[450px]" style={{ backgroundImage: `url(${headerImg})` }}>
                 <div className="hero-overlay bg-opacity-50"></div>
-                <div className="hero-content text-center text-neutral-content">
+                <div className="hero-content text-center text-neutral-content mt-24">
                     <div className="bg-black bg-opacity-40 p-5 rounded-md">
                         <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
                         <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Train with best legends</h1>
-                        <button className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Enroll Now</button>
+                        <button className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">Enroll Now</button>
                     </div>
                 </div>
             </div>
