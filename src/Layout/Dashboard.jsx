@@ -14,10 +14,11 @@ import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
 import useInstructor from "../hooks/useInstructor";
 import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/InstructorHome";
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 
 const Dashboard = () => {
 
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
 
     const [selectedComponent, setSelectedComponent] = useState('home');
 
@@ -50,7 +51,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>Sign Out</a></li>
+                                <button onClick={logOut}>Sign Out</button>
                             </ul>
                         </div>
                     </div>
@@ -106,6 +107,9 @@ const Dashboard = () => {
                         {
                             selectedComponent === 'addClass' && <AddClass></AddClass>
                         }
+                        {
+                            selectedComponent === 'myClasses' && <MyClasses></MyClasses>
+                        }
 
 
                     </div>
@@ -130,8 +134,8 @@ const Dashboard = () => {
                                 </div>
                             </Link>
                             <Link to={'/dashboard/my-classes'}>
-                                <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'addClass' ? 'bg-base-200 opacity-70' : ''}`}
-                                    onClick={() => handleComponentSelection('addClass')}>
+                                <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'myClasses' ? 'bg-base-200 opacity-70' : ''}`}
+                                    onClick={() => handleComponentSelection('myClasses')}>
                                     <SiGoogleclassroom size={'20'} color="#E80040" />
                                     <p className="text-xl hover:text-[#E80040]">My Classes</p>
                                 </div>

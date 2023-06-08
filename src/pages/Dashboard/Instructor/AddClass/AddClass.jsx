@@ -36,7 +36,7 @@ const AddClass = () => {
             .then((imageData) => {
                 const imageUrl = imageData.data.display_url;
                 const { name, email, className, price, seats } = data;
-                const newUser = { name, email, className, price, seats, photo: imageUrl }
+                const newUser = { name, email, className, price: parseFloat(price), seats: parseInt(seats), photo: imageUrl }
 
                 fetch('http://localhost:4000/classes', {
                     method: 'POST',
