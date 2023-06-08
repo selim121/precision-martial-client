@@ -2,6 +2,8 @@ import useAuth from "../hooks/useAuth";
 import Logo from "../pages/Shared/Navbar/logo";
 import emptyProfile from '../assets/images/empty-profile.jpeg';
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
+import { IoIosAddCircle } from "react-icons/io";
+import { SiGoogleclassroom } from "react-icons/si";
 import { FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
@@ -11,6 +13,7 @@ import useAdmin from "../hooks/useAdmin";
 import StudentHome from "../pages/Dashboard/Student/StudentHome/StudentHome";
 import useInstructor from "../hooks/useInstructor";
 import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/InstructorHome";
+import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 
 const Dashboard = () => {
 
@@ -100,6 +103,9 @@ const Dashboard = () => {
                         {
                             selectedComponent === 'home' && <InstructorHome></InstructorHome>
                         }
+                        {
+                            selectedComponent === 'addClass' && <AddClass></AddClass>
+                        }
 
 
                     </div>
@@ -114,6 +120,20 @@ const Dashboard = () => {
                                     onClick={() => handleComponentSelection('home')}>
                                     <AiFillHome size={'20'} color="#E80040" />
                                     <p className="text-xl hover:text-[#E80040]">Home</p>
+                                </div>
+                            </Link>
+                            <Link to={'/dashboard/add-class'}>
+                                <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'addClass' ? 'bg-base-200 opacity-70' : ''}`}
+                                    onClick={() => handleComponentSelection('addClass')}>
+                                    <IoIosAddCircle size={'20'} color="#E80040" />
+                                    <p className="text-xl hover:text-[#E80040]">Add Class</p>
+                                </div>
+                            </Link>
+                            <Link to={'/dashboard/my-classes'}>
+                                <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'addClass' ? 'bg-base-200 opacity-70' : ''}`}
+                                    onClick={() => handleComponentSelection('addClass')}>
+                                    <SiGoogleclassroom size={'20'} color="#E80040" />
+                                    <p className="text-xl hover:text-[#E80040]">My Classes</p>
                                 </div>
                             </Link>
                         </ul>
