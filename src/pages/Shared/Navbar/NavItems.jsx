@@ -68,12 +68,6 @@ const NavItems = () => {
                             }
                             {
                                 user?.email ? <>
-                                    <Link
-                                        to='/profile'
-                                        className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                                    >
-                                        Profile
-                                    </Link>
                                     <div
                                         onClick={logOut}
                                         className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'

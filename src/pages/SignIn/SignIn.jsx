@@ -30,8 +30,7 @@ const SignIn = () => {
     // user sign in
     const onSubmit = (data) => {
         signIn(data.email, data.password)
-        .then(result => {
-          console.log(result.user)
+        .then(() => {
           navigate(from, { replace: true })
         })
         .catch(err => {
