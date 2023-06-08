@@ -1,9 +1,38 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
+import useAxiosSecure from "../../hooks/UseAxiosSecure";
+import useAuth from "../../hooks/useAuth";
+import Swal from 'sweetalert2';
 
 
 const ClassCard = ({ cls }) => {
 
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
     const { photo, name, className, seats, price } = cls;
+
+
+    const handleEnroll = classId => {
+
+        const { className, photo, price, seats } = cls;
+        const selectedClass = { className, price: parseFloat(price), seats: parseInt(seats), photo, email: user.email };
+
+        axiosSecure.post('/selectedClasses', selectedClass)
+        .then(data => {
+            if(data.data.insertedId){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${className} by ${cls.name} added successfully`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  
+            }
+        })
+        
+    }
 
     return (
         <>
@@ -29,7 +58,7 @@ const ClassCard = ({ cls }) => {
                                 <p className="text-[#E80040]">$ {price}</p>
                             </div>
                             <div className="mt-3 flex justify-center items-center">
-                                <button className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">Enroll Now</button>
+                                <button onClick={() => handleEnroll(cls._id)} className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">Enroll Now</button>
                             </div>
                         </div>
                     </div>
