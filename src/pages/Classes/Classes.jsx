@@ -1,13 +1,28 @@
+/* eslint-disable no-unused-vars */
 import headerImg from '../../assets/images/header/class.png';
 import { useQuery } from "@tanstack/react-query";
 import ClassCard from './ClassCard';
+import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
 
 const Classes = () => {
+    const {user} = useAuth();
 
-    const { data: classes = [] } = useQuery(['classes'], async () => {
+    const { data: classes = [], isLoading: isClassesLoading } = useQuery(['classes'], async () => {
         const res = await fetch('http://localhost:4000/approved-classes');
         return res.json();
     });
+
+    const { data: enrolledClasses = [], refetch, isLoading } = useQuery({
+        queryKey: ['enrolledClasses', user?.email], 
+        enabled: !!user?.email,
+        queryFn: async () => {
+            const res = await axios(`http://localhost:4000/enrolledClasses/${user?.email}`);
+            console.log(res);
+            return res.data;
+        }
+    });
+
 
     return (
         <>
@@ -27,6 +42,8 @@ const Classes = () => {
                     classes && classes.map(cls => <ClassCard
                         key={cls.id}
                         cls={cls}
+                        enrolledClasses={enrolledClasses}
+                        refetch={refetch}
                     ></ClassCard>)
                 }
             </div>
