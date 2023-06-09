@@ -3,18 +3,63 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 
 const EnrolledClasses = () => {
 
     const [axiosSecure] = useAxiosSecure();
-    const {user} = useAuth();
-    
-    const { data: enrolledClasses = [] } = useQuery(['enrolledClasses'], async () => {
+    const { user } = useAuth();
+
+    const { data: enrolledClasses = [], refetch } = useQuery(['enrolledClasses'], async () => {
         const res = await axiosSecure.get(`/enrolledClasses/${user?.email}`);
         return res.data;
     })
 
-    console.log(enrolledClasses);
+    const handleDelete = id => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/enrolledClasses/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                'Your Enrolled Class has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your Enrolled Class is safe :)',
+                    'error'
+                )
+            }
+        })
+    }
 
     return (
         <>
@@ -67,12 +112,12 @@ const EnrolledClasses = () => {
                                     {enrolledClass.seats}
                                 </td>
                                 <td>
-                                <button className="bg-slate-200 px-4 py-2 rounded-lg hover:opacity-50">
+                                    <button className="bg-slate-200 px-4 py-2 rounded-lg hover:opacity-50">
                                         Pay
                                     </button>
                                 </td>
                                 <td >
-                                    <button className="bg-slate-200 p-2 rounded-lg hover:opacity-50">
+                                    <button onClick={() => handleDelete(enrolledClass._id)} className="bg-slate-200 p-2 rounded-lg hover:opacity-50">
                                         <AiFillDelete size={'30'} color="red" />
                                     </button>
                                 </td>
