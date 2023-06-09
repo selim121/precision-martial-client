@@ -18,6 +18,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
 import Payment from "../pages/Dashboard/Student/Payment/Payment";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -56,39 +57,39 @@ import Payment from "../pages/Dashboard/Student/Payment/Payment";
         children: [
             {
                 path: 'admin-home',
-                element: <AdminHome></AdminHome>
+                element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
             },
             {
                 path: 'all-users',
-                element: <AllUsers></AllUsers>
+                element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
             },
             {
                 path: 'manage-classes',
-                element: <ManageClasses></ManageClasses>
+                element: <PrivateRoute><ManageClasses></ManageClasses></PrivateRoute>
             },
             {
                 path: 'instructor-home',
-                element: <InstructorHome></InstructorHome>
+                element: <PrivateRoute><InstructorHome></InstructorHome></PrivateRoute>
             },
             {
                 path: 'add-class',
-                element: <AddClass></AddClass>
+                element: <PrivateRoute><AddClass></AddClass></PrivateRoute>
             },
             {
                 path: 'my-classes',
-                element: <MyClasses></MyClasses>
+                element: <PrivateRoute><MyClasses></MyClasses></PrivateRoute>
             },
             {
                 path: 'student-home',
-                element: <StudentHome></StudentHome>
+                element: <PrivateRoute></PrivateRoute>
             },
             {
                 path: 'enrolled-classes',
-                element: <EnrolledClasses></EnrolledClasses>
+                element: <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>
             },
             {
                 path: 'payment/:id',
-                element: <Payment></Payment>
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             }
         ]
     }
