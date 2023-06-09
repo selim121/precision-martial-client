@@ -19,6 +19,7 @@ import Classes from "../pages/Classes/Classes";
 import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
 import Payment from "../pages/Dashboard/Student/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
   const router = createBrowserRouter([
     {
@@ -55,18 +56,22 @@ import PrivateRoute from "./PrivateRoute";
         path: 'dashboard',
         element: <Dashboard></Dashboard>,
         children: [
+
+            //admin routes
             {
                 path: 'admin-home',
-                element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
                 path: 'all-users',
-                element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path: 'manage-classes',
-                element: <PrivateRoute><ManageClasses></ManageClasses></PrivateRoute>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
+
+            //instructor routes
             {
                 path: 'instructor-home',
                 element: <PrivateRoute><InstructorHome></InstructorHome></PrivateRoute>
@@ -79,9 +84,11 @@ import PrivateRoute from "./PrivateRoute";
                 path: 'my-classes',
                 element: <PrivateRoute><MyClasses></MyClasses></PrivateRoute>
             },
+
+            //student routes
             {
                 path: 'student-home',
-                element: <PrivateRoute></PrivateRoute>
+                element: <PrivateRoute><StudentHome></StudentHome></PrivateRoute>
             },
             {
                 path: 'enrolled-classes',
