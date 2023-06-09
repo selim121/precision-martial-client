@@ -5,7 +5,7 @@ import InstructorCard from './InstructorCard';
 const Instructors = () => {
 
     const { data: instructors = [] } = useQuery(['instructors'], async () => {
-        const res = await fetch('http://localhost:4000/allInstructors');
+        const res = await fetch('https://precision-martial-server.vercel.app/allInstructors');
         return res.json();
     });
 

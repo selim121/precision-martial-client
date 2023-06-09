@@ -12,12 +12,12 @@ const ManageClasses = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
-        const res = await fetch('http://localhost:4000/classes');
+        const res = await fetch('https://precision-martial-server.vercel.app/classes');
         return res.json();
     });
 
     const handleApproved = allClass => {
-        fetch(`http://localhost:4000/classes/approved/${allClass._id}`, {
+        fetch(`https://precision-martial-server.vercel.app/classes/approved/${allClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const ManageClasses = () => {
             })
     }
     const handleDeny = allClass => {
-        fetch(`http://localhost:4000/classes/deny/${allClass._id}`, {
+        fetch(`https://precision-martial-server.vercel.app/classes/deny/${allClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -65,7 +65,7 @@ const ManageClasses = () => {
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/classes/${selectClass}/feedback`, {
+                fetch(`https://precision-martial-server.vercel.app/classes/${selectClass}/feedback`, {
                     method: 'PUT',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(data)

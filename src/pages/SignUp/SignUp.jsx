@@ -50,7 +50,7 @@ const SignUp = () => {
                 const { name, email, password, confirmPassword, gender, phoneNumber } = data;
                 const newUser = { name, email, password, confirmPassword, gender, phoneNumber, photo: imageUrl }
 
-                fetch('http://localhost:4000/users', {
+                fetch('https://precision-martial-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -14,7 +14,7 @@ const MyClasses = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const { data: myClasses = [] } = useQuery(['myClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/classes/${user?.email}`);
+        const res = await fetch(`https://precision-martial-server.vercel.app/classes/${user?.email}`);
         return res.json();
     });
 
@@ -44,7 +44,7 @@ const MyClasses = () => {
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/classes/update/${selectClass}`, {
+                fetch(`https://precision-martial-server.vercel.app/classes/update/${selectClass}`, {
                     method: 'PUT',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(data)

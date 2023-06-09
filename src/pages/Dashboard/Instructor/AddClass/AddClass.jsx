@@ -12,7 +12,7 @@ const AddClass = () => {
     const navigate = useNavigate();
 
     const { data: profile = [] } = useQuery(['profile'], async () => {
-        const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
+        const res = await fetch(`https://precision-martial-server.vercel.app/allUsers/${user?.email}`);
         return res.json();
     });
 
@@ -40,7 +40,7 @@ const AddClass = () => {
                 const { name, email, className, price, seats } = data;
                 const newUser = { name, email, className, price: parseFloat(price), seats: parseInt(seats), photo: imageUrl }
 
-                fetch('http://localhost:4000/classes', {
+                fetch('https://precision-martial-server.vercel.app/classes', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

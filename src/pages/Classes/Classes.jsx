@@ -9,7 +9,7 @@ const Classes = () => {
     const {user} = useAuth();
 
     const { data: classes = [], isLoading: isClassesLoading } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:4000/approved-classes');
+        const res = await fetch('https://precision-martial-server.vercel.app/approved-classes');
         return res.json();
     });
 
@@ -17,7 +17,7 @@ const Classes = () => {
         queryKey: ['enrolledClasses', user?.email], 
         enabled: !!user?.email,
         queryFn: async () => {
-            const res = await axios(`http://localhost:4000/enrolledClasses/${user?.email}`);
+            const res = await axios(`https://precision-martial-server.vercel.app/enrolledClasses/${user?.email}`);
             console.log(res);
             return res.data;
         }

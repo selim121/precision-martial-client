@@ -9,7 +9,7 @@ const InstructorHome = () => {
     const { user } = useAuth();
 
     const { data: profile = [] } = useQuery(['profile'], async () => {
-        const res = await fetch(`http://localhost:4000/allUsers/${user?.email}`);
+        const res = await fetch(`https://precision-martial-server.vercel.app/allUsers/${user?.email}`);
         return res.json();
     });
 

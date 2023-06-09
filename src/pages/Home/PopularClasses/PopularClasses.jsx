@@ -6,7 +6,7 @@ import PopularClassCard from "./PopularClassCard";
 const PopularClasses = () => {
 
     const { data: classes = [] } = useQuery(['classes'], async () => {
-        const res = await fetch('http://localhost:4000/classes');
+        const res = await fetch('https://precision-martial-server.vercel.app/classes');
         return res.json();
     });
 

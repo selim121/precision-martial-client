@@ -4,11 +4,13 @@ import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
 
 const EnrolledClasses = () => {
 
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
+    
 
     const { data: enrolledClasses = [], refetch } = useQuery(['enrolledClasses'], async () => {
         const res = await axiosSecure.get(`/enrolledClasses/${user?.email}`);
@@ -34,7 +36,7 @@ const EnrolledClasses = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/enrolledClasses/${id}`, {
+                fetch(`https://precision-martial-server.vercel.app/enrolledClasses/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -112,9 +114,7 @@ const EnrolledClasses = () => {
                                     {enrolledClass.seats}
                                 </td>
                                 <td>
-                                    <button className="bg-slate-200 px-4 py-2 rounded-lg hover:opacity-50">
-                                        Pay
-                                    </button>
+                                    <Link to={`/dashboard/payment/${enrolledClass._id}`} className="bg-amber-400 px-4 py-2 rounded-lg hover:opacity-50">Pay</Link>
                                 </td>
                                 <td >
                                     <button onClick={() => handleDelete(enrolledClass._id)} className="bg-slate-200 p-2 rounded-lg hover:opacity-50">
