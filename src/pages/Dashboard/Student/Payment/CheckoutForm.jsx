@@ -3,9 +3,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+// import Swal from 'sweetalert2';
 
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ price, classPayment }) => {
     const { user } = useAuth();
     const stripe = useStripe();
     const elements = useElements();
@@ -68,6 +69,49 @@ const CheckoutForm = ({ price }) => {
         setProcessing(false);
         if(paymentIntent.status === 'succeeded'){
             setTransactionId(paymentIntent.id);
+            const payment = {
+                email: user?.email, 
+                transactionId: paymentIntent.id,
+                price,
+                className: classPayment.className,
+                date: new Date()
+            }
+            console.log(payment);
+
+            // fetch('https://precision-martial-server.vercel.app/payments', {
+            //         method: 'POST',
+            //         headers: {
+            //             'content-type': 'application/json'
+            //         },
+            //         body: JSON.stringify(payment)
+            //     })
+            //         .then(res => res.json())
+            //         .then(data => {
+            //             if (data.insertedId) {
+            //                 Swal.fire({
+            //                     position: 'top-end',
+            //                     icon: 'success',
+            //                     title: 'Class Add Successfully!',
+            //                     showConfirmButton: false,
+            //                     timer: 1500
+            //                   })
+                              
+            //             }
+            //         })
+
+            // axiosSecure.post('/payments', payment)
+            // .then(res => {
+            //     console.log(res.data);
+            //     if(res.data.insertedId){
+            //         Swal.fire({
+            //             position: 'top-end',
+            //             icon: 'success',
+            //             title: 'Item added successfully',
+            //             showConfirmButton: false,
+            //             timer: 1500
+            //           })
+            //     }
+            // })
         }
     }
 
