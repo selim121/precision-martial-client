@@ -88,6 +88,7 @@ const AllUsers = () => {
                             <th>Email</th>
                             <th>Make Admin</th>
                             <th>Make Instructor</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -113,18 +114,23 @@ const AllUsers = () => {
                                     {user.email}
                                 </td>
                                 <td>{
-                                    user.role === 'admin' ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Admin</button>
+                                    (user.role === 'admin' || user.role === 'instructor') ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Admin</button>
                                     :
-                                    user.role === 'admin' ? 'admin'
+                                    (user.role === 'admin') ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Admin</button>
                                         : <button onClick={() => handleMakeAdmin(user)} className=" bg-green-700 p-1 rounded-md text-white">Admin</button>
                                 }
                                 </td>
                                 <td>{
-                                    user.role === 'instructor' ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Instructor</button>
+                                    (user.role === 'instructor') ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Instructor</button>
                                     :
-                                    user.role === 'admin' ? 'admin'
+                                    (user.role === 'admin') ? 'admin'
                                     : <button onClick={() => handleMakeInstructor(user)} className="bg-green-700 p-1 rounded-md text-white">Instructor</button>
                                 }
+                                </td>
+                                <td>
+                                    {
+                                        user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : ''
+                                    }
                                 </td>
                                 <td >
                                     <button onClick={() => handleDelete(user)} className="bg-slate-200 p-2 rounded-lg hover:opacity-50">

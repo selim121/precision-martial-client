@@ -23,6 +23,12 @@ const ManageClasses = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Class Approved Successfully',
+                        icon: 'Success',
+                        confirmButtonText: 'Ok'
+                    })
                     refetch();
                 }
             })
@@ -34,6 +40,12 @@ const ManageClasses = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Class Denied Successfully',
+                        icon: 'Success',
+                        confirmButtonText: 'Ok'
+                    })
                     refetch();
                 }
             })
@@ -49,13 +61,13 @@ const ManageClasses = () => {
     const handleUpdate = data => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
-          
-          swalWithBootstrapButtons.fire({
+        })
+
+        swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -63,7 +75,7 @@ const ManageClasses = () => {
             confirmButtonText: 'Yes, send it!',
             cancelButtonText: 'No, cancel!',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://precision-martial-server.vercel.app/classes/${selectClass}/feedback`, {
                     method: 'PUT',
@@ -84,17 +96,17 @@ const ManageClasses = () => {
                         }
                     })
             } else if (
-              result.dismiss === Swal.DismissReason.cancel
+                result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-              )
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
             }
-          })
-          
-        
+        })
+
+
     };
 
 
@@ -126,8 +138,8 @@ const ManageClasses = () => {
                                     }
                                 </span></h3>
                             </div>
-                            {/* TODO:Feedback implement */}
                             <div className="flex flex-col gap-4 justify-center mx-auto">
+
                                 {
                                     (allClass.status === 'approved' || allClass.status === 'deny') ? <button className="px-2 py-3 bg-green-700 rounded-md text-white opacity-40" disabled>Approved</button>
                                         :
@@ -141,7 +153,11 @@ const ManageClasses = () => {
                                         <button onClick={() => handleDeny(allClass)} className="px-2 py-3 bg-red-500 rounded-md text-white hover:opacity-40">Deny</button>
                                 }
 
-                                <button onClick={() => handleFeedback(allClass._id)} className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Send Feedback</button>
+                                {
+                                    (allClass.status === 'approved') ? <button className="px-2 py-3 bg-cyan-500 rounded-md text-white opacity-40" disabled>Send Feedback</button>
+                                        :
+                                        <button onClick={() => handleFeedback(allClass._id)} className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Send Feedback</button>
+                                }
 
                                 {showModal ? (
                                     <>

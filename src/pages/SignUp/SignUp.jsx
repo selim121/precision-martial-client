@@ -3,8 +3,9 @@ import { AiFillGoogleCircle, AiFillEye, AiFillEyeInvisible } from "react-icons/a
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
+import Swal from 'sweetalert2'
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
     const {
@@ -60,7 +61,7 @@ const SignUp = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
-                            toast.success('Successfully SIgn Up');
+                            navigate(from, { replace: true })
                         }
                     })
 
@@ -68,8 +69,14 @@ const SignUp = () => {
                     .then(() => {
                         updateUserProfile(data.name, imageUrl)
                             .then(() => {
-                                toast.success('Signup successful')
-                                navigate(from, { replace: true })
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'Awesome',
+                                    title: 'Signup successful',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  })
+                                navigate(from, { replace: true });
                             })
                             .catch(err => {
                                 setLoading(false)

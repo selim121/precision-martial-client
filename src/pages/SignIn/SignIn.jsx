@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
 
@@ -13,8 +14,8 @@ const SignIn = () => {
     const { setLoading, signIn, signInWithGoogle, resetPassword } = useAuth();
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
-    const emailRef = useRef()
+    const from = location.state?.from?.pathname || '/';
+    const emailRef = useRef();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -31,7 +32,14 @@ const SignIn = () => {
     const onSubmit = (data) => {
         signIn(data.email, data.password)
         .then(() => {
-          navigate(from, { replace: true })
+          navigate(from, { replace: true });
+          Swal.fire({
+            position: 'top-end',
+            icon: 'Awesome',
+            title: 'Signin Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch(err => {
           setLoading(false)
@@ -44,7 +52,14 @@ const SignIn = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
           .then(() => {
-            navigate(from, { replace: true })
+            navigate(from, { replace: true });
+            Swal.fire({
+                position: 'top-end',
+                icon: 'Awesome',
+                title: 'Signin Successfully',
+                showConfirmButton: false,
+                timer: 1500
+              })
           })
           .catch(err => {
             setLoading(false)
@@ -58,7 +73,13 @@ const SignIn = () => {
     
         resetPassword(email)
           .then(() => {
-            toast.success('Please check your email for reset link')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'Success',
+                title: 'Please check your email for reset link',
+                showConfirmButton: false,
+                timer: 1500
+              })
             setLoading(false)
           })
           .catch(err => {

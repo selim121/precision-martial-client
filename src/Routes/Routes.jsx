@@ -1,6 +1,6 @@
 import {
     createBrowserRouter,
-  } from "react-router-dom";
+} from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
@@ -22,7 +22,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 
-  const router = createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
@@ -101,6 +101,6 @@ import InstructorRoute from "./InstructorRoute";
             }
         ]
     }
-  ]);
+]);
 
-  export default router;
+export default router;

@@ -6,7 +6,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BsCartPlusFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
@@ -39,7 +39,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                <button onClick={logOut}>Sign Out</button>
+                                <Link onClick={logOut} to={'/sign-in'}>Sign Out</Link>
                             </ul>
                         </div>
                     </div>
