@@ -4,6 +4,7 @@ import emptyProfile from '../assets/images/empty-profile.jpeg';
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
 import { SiGoogleclassroom } from "react-icons/si";
+import { BsCartPlusFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers";
@@ -16,6 +17,7 @@ import InstructorHome from "../pages/Dashboard/Instructor/InstructorHome/Instruc
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
 
 const Dashboard = () => {
 
@@ -165,6 +167,9 @@ const Dashboard = () => {
                                 {
                                     selectedComponent === 'home' && <StudentHome></StudentHome>
                                 }
+                                {
+                                    selectedComponent === 'enrolledClasses' && <EnrolledClasses></EnrolledClasses>
+                                }
 
 
                             </div>
@@ -179,6 +184,13 @@ const Dashboard = () => {
                                             onClick={() => handleComponentSelection('home')}>
                                             <AiFillHome size={'20'} color="#E80040" />
                                             <p className="text-xl hover:text-[#E80040]">Home</p>
+                                        </div>
+                                    </Link>
+                                    <Link to={'/dashboard/enrolled-classes'}>
+                                        <div className={`flex flex-row items-center gap-2 mt-5 hover:bg-base-200 hover:opacity-70 px-4 py-1 rounded-md ${selectedComponent === 'enrolledClasses' ? 'bg-base-200 opacity-70' : ''}`}
+                                            onClick={() => handleComponentSelection('enrolledClasses')}>
+                                            <BsCartPlusFill size={'20'} color="#E80040" />
+                                            <p className="text-xl hover:text-[#E80040]">Enrolled</p>
                                         </div>
                                     </Link>
                                 </ul>

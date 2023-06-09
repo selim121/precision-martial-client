@@ -18,7 +18,7 @@ const ClassCard = ({ cls }) => {
         const { className, photo, price, seats } = cls;
         const selectedClass = { className, price: parseFloat(price), seats: parseInt(seats), photo, email: user.email };
 
-        axiosSecure.post('/selectedClasses', selectedClass)
+        axiosSecure.post('/enrolledClasses', selectedClass)
         .then(data => {
             if(data.data.insertedId){
                 Swal.fire({
