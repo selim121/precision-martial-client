@@ -153,11 +153,7 @@ const ManageClasses = () => {
                                         <button onClick={() => handleDeny(allClass)} className="px-2 py-3 bg-red-500 rounded-md text-white hover:opacity-40">Deny</button>
                                 }
 
-                                {
-                                    (allClass.status === 'approved') ? <button className="px-2 py-3 bg-cyan-500 rounded-md text-white opacity-40" disabled>Send Feedback</button>
-                                        :
-                                        <button onClick={() => handleFeedback(allClass._id)} className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Send Feedback</button>
-                                }
+<button onClick={() => handleFeedback(allClass._id)} className="px-2 py-3 bg-cyan-500 rounded-md text-white hover:opacity-40">Send Feedback</button>
 
                                 {showModal ? (
                                     <>

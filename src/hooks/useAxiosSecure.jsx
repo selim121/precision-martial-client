@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 import { useEffect } from 'react';
 
@@ -11,6 +11,8 @@ const axiosSecure = axios.create({
 const useAxiosSecure = () => {
   const { logOut } = useAuth();
   const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
@@ -26,12 +28,12 @@ const useAxiosSecure = () => {
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
           await logOut();
-          navigate('/login');
+          navigate(from, { replace: true })
         }
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOut, navigate, from]);
 
   return [axiosSecure];
 };

@@ -20,8 +20,6 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
-    console.log(enrolledClasses.some(singleClass => singleClass.id === cls._id));
-
     const isDisabled = enrolledClasses.some(singleClass => singleClass.id === cls._id);
 
 

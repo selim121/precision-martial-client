@@ -8,8 +8,8 @@ const Home = () => {
         <>
             <Header></Header>
             <WelcomePage></WelcomePage>
-            <PopularClasses></PopularClasses>
-            <PopularInstructors></PopularInstructors>
+            {/* <PopularClasses></PopularClasses> */}
+            {/* <PopularInstructors></PopularInstructors> */}
         </>
     );
 };

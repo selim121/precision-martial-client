@@ -16,9 +16,9 @@ const SignUp = () => {
     } = useForm();
 
     const { setLoading, createUser, updateUserProfile, signInWithGoogle } = useAuth();
-    const navigate = useNavigate()
-    const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const password = watch('password');
 

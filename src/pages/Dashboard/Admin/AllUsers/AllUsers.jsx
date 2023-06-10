@@ -113,6 +113,7 @@ const AllUsers = () => {
                                 <td>
                                     {user.email}
                                 </td>
+
                                 <td>{
                                     (user.role === 'admin' || user.role === 'instructor') ? <button className="bg-green-700 p-1 opacity-50 rounded-md text-white" disabled>Admin</button>
                                     :

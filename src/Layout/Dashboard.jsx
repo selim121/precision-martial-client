@@ -38,9 +38,9 @@ const Dashboard = () => {
                                     <img src={user && user.photoURL ? user.photoURL : emptyProfile} />
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                 <Link onClick={logOut} to={'/sign-in'}>Sign Out</Link>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ const Dashboard = () => {
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="menu" className="drawer-overlay"></label>
-                        <ul className="menu py-4 px-2 w-52 lg:w-1/5 h-full lg:fixed mt-24 lg:mt-0 bg-[#dc034158] text-base-content">
+                        <ul className="menu py-4 px-2 w-58 lg:w-1/5 h-full lg:fixed mt-24 lg:mt-0 bg-[#dc034158] text-base-content">
                             <div className="text-center py-4 mb-4 border-b-4 border-[#E80040]">
                                 <h1 className="text-3xl uppercase font-bold tracking-[3px]">Admin</h1>
                             </div>

@@ -12,6 +12,25 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            console.log('Current User:', {currentUser});
+            if (currentUser) {
+                axios.post('https://precision-martial-server.vercel.app/jwt', { email: currentUser.email })
+                .then(data => {
+                    localStorage.setItem('access-token',  data.data.token);
+                })
+            }else {
+                localStorage.removeItem('access-token');
+            }
+            setLoading(false);
+        })
+        return () => {
+            return unsubscribe()
+        }
+    }, [])
+
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -44,23 +63,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
-            if (currentUser) {
-                axios.post('https://precision-martial-server.vercel.app/jwt', { email: currentUser.email })
-                .then(data => {
-                    localStorage.setItem('access-token',  data.data.token);
-                })
-            }else {
-                localStorage.removeItem('access-token');
-            }
-            setLoading(false);
-        })
-        return () => {
-            return unsubscribe()
-        }
-    }, [])
+    
 
     const authInfo = {
         user,

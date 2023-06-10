@@ -92,6 +92,7 @@ const MyClasses = () => {
                         <div>
                             <h1 className="text-4xl font-semibold uppercase">{myClass.className}</h1>
                             <p className="py-2">Available seats: {myClass.seats}</p>
+                            {/* TODO: Implement total enrolled */}
                             <p className="py-1">Total Enrolled: 0</p>
 
                             <h3 className="text-xl font-semibold">Status: <span className=
@@ -181,7 +182,7 @@ const MyClasses = () => {
                                 ) : null
                             }
                         </div>
-                        {/* TODO:Feedback implement */}
+
                         {
                             myClass.status === 'deny' && <div className="text-center bg-white ">
                                 <div className="p-6">

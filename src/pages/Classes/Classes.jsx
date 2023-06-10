@@ -18,7 +18,7 @@ const Classes = () => {
         enabled: !!user?.email,
         queryFn: async () => {
             const res = await axios(`https://precision-martial-server.vercel.app/enrolledClasses/${user?.email}`);
-            console.log(res);
+            // console.log(res);
             return res.data;
         }
     });
