@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log('Current User:', {currentUser});
+            // console.log('Current User:', {currentUser});
             if (currentUser) {
                 axios.post('https://precision-martial-server.vercel.app/jwt', { email: currentUser.email })
                 .then(data => {

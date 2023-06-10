@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Header from "../Header/Header";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import PopularClasses from "../PopularClasses/PopularClasses";

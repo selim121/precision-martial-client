@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import useAuth from "../hooks/useAuth";
 import Logo from "../pages/Shared/Navbar/logo";
 import emptyProfile from '../assets/images/empty-profile.jpeg';

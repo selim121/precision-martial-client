@@ -12,7 +12,7 @@ const Payment = () => {
     const [axiosSecure] = useAxiosSecure();
     const { id } = useParams();
 
-    const { data: classPayment = [] } = useQuery(['classPayment'], async () => {
+    const { data: classPayment = [], refetch } = useQuery(['classPayment'], async () => {
         const res = await axiosSecure.get(`/payment/${id}`);
         return res.data;
     })
@@ -29,7 +29,7 @@ const Payment = () => {
             <div className="divider"></div>
             <div className="">
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm classPayment={classPayment} price={price} ></CheckoutForm>
+                    <CheckoutForm classPayment={classPayment} price={price} refetch={refetch} ></CheckoutForm>
                 </Elements>
             </div>
         </>

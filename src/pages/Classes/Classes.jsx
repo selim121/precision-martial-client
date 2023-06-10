@@ -40,7 +40,7 @@ const Classes = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12 mt-8">
                 {
                     classes && classes.map(cls => <ClassCard
-                        key={cls.id}
+                        key={cls._id}
                         cls={cls}
                         enrolledClasses={enrolledClasses}
                         refetch={refetch}

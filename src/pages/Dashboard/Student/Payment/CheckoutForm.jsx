@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from 'sweetalert2';
+import { useParams } from "react-router-dom";
 
 
-const CheckoutForm = ({ price, classPayment }) => {
+const CheckoutForm = ({ price, classPayment, refetch }) => {
     const { user } = useAuth();
     const stripe = useStripe();
     const elements = useElements();
@@ -16,6 +17,8 @@ const CheckoutForm = ({ price, classPayment }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
+    const {id} = useParams();
+    const enrolledClassId = id;
     useEffect(() => {
         if(price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
@@ -75,6 +78,7 @@ const CheckoutForm = ({ price, classPayment }) => {
                 email: user?.email, 
                 transactionId: paymentIntent.id,
                 price,
+                id: id,
                 className: classPayment.className,
                 date: new Date()
             }
@@ -83,10 +87,22 @@ const CheckoutForm = ({ price, classPayment }) => {
             .then(res => {
                 console.log(res.data);
                 if(res.data.insertedId){
+                    console.log(res.data);
+                    fetch(`https://precision-martial-server.vercel.app/enrolledClasses/${enrolledClassId}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                        }
+                    })
+
+
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Item added successfully',
+                        title: 'Class Payment successfully',
                         showConfirmButton: false,
                         timer: 1500
                       })
