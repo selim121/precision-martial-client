@@ -96,6 +96,9 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
                 id: id,
                 classId: classPayment.id,
                 className: classPayment.className,
+                photo: classPayment.photo,
+                instructorName: classPayment.instructorName,
+                instructorEmail: classPayment.instructorEmail,
                 date: new Date()
             }
 

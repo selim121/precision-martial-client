@@ -4,6 +4,7 @@ import Logo from "../pages/Shared/Navbar/logo";
 import emptyProfile from '../assets/images/empty-profile.jpeg';
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
+import { VscVmRunning } from "react-icons/vsc";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BsCartPlusFill } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
@@ -127,6 +128,9 @@ const Dashboard = () => {
                                     </NavLink></li>
                                     <li><NavLink to={'/dashboard/enrolled-classes'} className={'text-xl'}>
                                     <BsCartPlusFill size={'20'} color="#E80040" /> Enrolled
+                                    </NavLink></li>
+                                    <li><NavLink to={`/dashboard/ongoing-classes/${user?.email}`} className={'text-xl'}>
+                                    <VscVmRunning size={'20'} color="#E80040" /> Ongoing
                                     </NavLink></li>
                                 </ul>
 

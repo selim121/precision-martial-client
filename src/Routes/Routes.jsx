@@ -21,6 +21,7 @@ import Payment from "../pages/Dashboard/Student/Payment/Payment";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import OngoingClasses from "../pages/Dashboard/Student/OnGoingClasses/OnGoingClasses";
 
 const router = createBrowserRouter([
     {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>
+            },
+            {
+                path: 'ongoing-classes/:email',
+                element: <PrivateRoute><OngoingClasses></OngoingClasses></PrivateRoute>
             }
         ]
     }

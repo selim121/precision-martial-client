@@ -22,12 +22,11 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
 
     const isDisabled = enrolledClasses.some(singleClass => singleClass.id === cls._id);
 
-
     const handleEnroll = classId => {
 
         if (user && user?.email) {
-            const { _id, className, photo, price, seats } = cls;
-            const selectedClass = { id: _id, className, price: parseFloat(price), seats: parseInt(seats), photo, email: user.email };
+            const { _id, className, photo, price, seats, name, email } = cls;
+            const selectedClass = { id: _id, className, price: parseFloat(price), seats: parseInt(seats), photo, email: user.email, instructorName: name, instructorEmail: email };
 
             axiosSecure.post('/enrolledClasses', selectedClass)
                 .then(data => {

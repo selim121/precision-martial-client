@@ -19,7 +19,6 @@ const Payment = () => {
 
     const { price } = classPayment;
 
-
     return (
         <>
             <SectionTitle
