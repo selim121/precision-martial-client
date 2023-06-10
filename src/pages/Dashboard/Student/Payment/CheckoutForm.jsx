@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
@@ -17,16 +18,30 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
-    const {id} = useParams();
+    const { id } = useParams();
     const enrolledClassId = id;
     useEffect(() => {
-        if(price > 0) {
+        if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                setClientSecret(res.data.clientSecret);
-            })
+                .then(res => {
+                    setClientSecret(res.data.clientSecret);
+                })
         }
     }, [price])
+
+    const handleSeatsUpdate = () => {
+        fetch(`https://precision-martial-server.vercel.app/confirmPayment/update/${classPayment.id}`,{
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -65,49 +80,49 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
             },
         );
 
-        if(confirmError) {
+        if (confirmError) {
             console.log(confirmError);
         }
         else {
             // console.log('payment intent',paymentIntent);
         }
         setProcessing(false);
-        if(paymentIntent.status === 'succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             const payment = {
-                email: user?.email, 
+                email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
                 id: id,
+                classId: classPayment.id,
                 className: classPayment.className,
                 date: new Date()
             }
-            
+
             axiosSecure.post('/payments', payment)
-            .then(res => {
-                console.log(res.data);
-                if(res.data.insertedId){
-                    console.log(res.data);
-                    fetch(`https://precision-martial-server.vercel.app/enrolledClasses/${enrolledClassId}`, {
-                    method: 'DELETE'
+                .then(res => {
+                    if (res.data.insertedId) {
+                        fetch(`https://precision-martial-server.vercel.app/enrolledClasses/${enrolledClassId}`, {
+                            method: 'DELETE'
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.deletedCount > 0) {
+                                    handleSeatsUpdate();
+                                    refetch();
+                                }
+                            })
+
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Class Payment successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
-                            refetch();
-                        }
-                    })
-
-
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Class Payment successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                }
-            })
         }
     }
 
