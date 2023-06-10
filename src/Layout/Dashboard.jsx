@@ -51,7 +51,7 @@ const Dashboard = () => {
             {
                 isAdmin ? <div className="drawer lg:drawer-open pt-24">
                     <input id="menu" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content px-5 mt-5 w-full lg:w-4/5 absolute right-0">
+                    <div className="drawer-content px-5 mt-20 w-full lg:w-4/5 absolute right-0">
                         <Outlet></Outlet>
                     </div>
                     <div className="drawer-side">
@@ -79,7 +79,7 @@ const Dashboard = () => {
 
                     isInstructor ? <div className="drawer lg:drawer-open pt-24">
                         <input id="menu" type="checkbox" className="drawer-toggle" />
-                        <div className="drawer-content px-10 mt-5 w-full lg:w-4/5 absolute right-0">
+                        <div className="drawer-content px-10 mt-20 w-full lg:w-4/5 absolute right-0">
                             
                             <Outlet></Outlet>
 
@@ -114,7 +114,7 @@ const Dashboard = () => {
 
                         <div className="drawer lg:drawer-open pt-24">
                             <input id="menu" type="checkbox" className="drawer-toggle" />
-                            <div className="drawer-content px-5 mt-5 w-full lg:w-4/5 absolute right-0">
+                            <div className="drawer-content px-5 mt-20 w-full lg:w-4/5 absolute right-0">
                                 <Outlet></Outlet>
                             </div>
                             <div className="drawer-side">

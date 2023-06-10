@@ -65,7 +65,7 @@ const EnrolledClasses = () => {
     }
 
     return (
-        <>
+        <> 
             <SectionTitle
                 heading={'Your Enrolled Classes'}
                 paragraph={'You can pay or remove classes'}
