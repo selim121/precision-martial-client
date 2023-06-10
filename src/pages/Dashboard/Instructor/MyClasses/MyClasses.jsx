@@ -28,13 +28,13 @@ const MyClasses = () => {
     const handleUpdate = data => {
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
-          
-          swalWithBootstrapButtons.fire({
+        })
+
+        swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -42,7 +42,7 @@ const MyClasses = () => {
             confirmButtonText: 'Yes, send it!',
             cancelButtonText: 'No, cancel!',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://precision-martial-server.vercel.app/classes/update/${selectClass}`, {
                     method: 'PUT',
@@ -63,20 +63,20 @@ const MyClasses = () => {
                         }
                     })
             } else if (
-              result.dismiss === Swal.DismissReason.cancel
+                result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-              )
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
             }
-          })
-          
-        
+        })
+
+
     };
 
-    
+
 
     return (
         <div>
@@ -93,7 +93,7 @@ const MyClasses = () => {
                             <h1 className="text-4xl font-semibold uppercase">{myClass.className}</h1>
                             <p className="py-2">Available seats: {myClass.seats}</p>
                             {/* TODO: Implement total enrolled */}
-                            <p className="py-1">Total Enrolled: 0</p>
+                            <p className="py-1">Total Enrolled: {myClass.totalEnroll ? myClass.totalEnroll : '0'}</p>
 
                             <h3 className="text-xl font-semibold">Status: <span className=
                                 {
@@ -181,7 +181,7 @@ const MyClasses = () => {
                                     </>
                                 ) : null
                             }
-                        </div>
+                                </div>
 
                         {
                             myClass.status === 'deny' && <div className="text-center bg-white ">
@@ -190,8 +190,8 @@ const MyClasses = () => {
                                     <p className="">
                                         {myClass.feedback}
                                     </p>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                         }
                     </div>
                 </div>)

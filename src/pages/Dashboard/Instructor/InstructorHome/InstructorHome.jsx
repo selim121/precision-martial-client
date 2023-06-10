@@ -1,42 +1,42 @@
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../../hooks/useAuth";
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-import { FaTransgenderAlt } from "react-icons/fa";
-
+import { useContext } from "react";
+import { AuthContext } from "../../../../providers/AuthProvider";
+import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
+import { useQuery } from '@tanstack/react-query';
+import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 
 const InstructorHome = () => {
 
-    const { user } = useAuth();
+    const { user } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
 
-    const { data: profile = [] } = useQuery(['profile'], async () => {
-        const res = await fetch(`https://precision-martial-server.vercel.app/allUsers/${user?.email}`);
-        return res.json();
-    });
+    const { data: myProfile = [] } = useQuery(['myProfile'], async () => {
+        const res = await axiosSecure.get(`/allUsers/${user?.email}`);
+        return res.data;
+    })
 
-    const { name, email, gender, phoneNumber, photo } = profile;
+    const { name, email, phoneNumber, photo, gender } = myProfile;
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-            <div className="">
-                <img src={photo} width={'300px'} className="rounded-xl" />
+        <>
+            <SectionTitle
+                heading='My Profile'
+            ></SectionTitle>
+            <div className="bg-[#dc034158]">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card-body">
+                            <img className="rounded-xl shadow-md" src={photo} alt="" />
+                        </div>
+                    </div>
+                    <div className="">
+                        <h3 className="text-4xl font-bold">{name}</h3>
+                        <h5 className="text-xl">Email: <span className="font-light">{email}</span></h5>
+                        <h5 className="text-xl">Phone: <span className="font-light">{phoneNumber}</span></h5>
+                        <h5 className="text-xl">Gender: <span className="font-light">{gender}</span></h5>
+                    </div>
+                </div>
             </div>
-            <div className="space-y-3">
-                <h1 className="text-5xl">{name}</h1>
-                <div className="flex flex-row items-center gap-2">
-                    <AiOutlineMail color="E80040" size={'20'} />
-                    <p className="text-xl">{email}</p>
-                </div>
-                <div className="flex flex-row items-center gap-2">
-                    <AiOutlinePhone color="E80040" size={'20'} />
-                    <p className="text-xl">{phoneNumber}</p>
-                </div>
-                <div className="flex flex-row items-center gap-2">
-                    <FaTransgenderAlt color="E80040" size={'20'} />
-                    <p className="text-xl">{gender}</p>
-                </div>
-
-            </div>
-        </div>
+        </>
     );
 };
 
