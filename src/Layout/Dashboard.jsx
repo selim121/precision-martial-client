@@ -7,7 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { VscVmRunning } from "react-icons/vsc";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BsCartPlusFill } from "react-icons/bs";
-import { FaUsers } from "react-icons/fa";
+import { FaUsers, FaHistory } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
@@ -131,6 +131,9 @@ const Dashboard = () => {
                                     </NavLink></li>
                                     <li><NavLink to={`/dashboard/ongoing-classes/${user?.email}`} className={'text-xl'}>
                                     <VscVmRunning size={'20'} color="#E80040" /> Ongoing
+                                    </NavLink></li>
+                                    <li><NavLink to={'/dashboard/payment-history'} className={'text-xl'}>
+                                    <FaHistory size={'20'} color="#E80040" /> History
                                     </NavLink></li>
                                 </ul>
 

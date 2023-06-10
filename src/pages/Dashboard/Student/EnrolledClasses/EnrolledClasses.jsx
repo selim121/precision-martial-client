@@ -5,6 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
+import sadImg from '../../../../assets/images/others/sad.png';
 
 const EnrolledClasses = () => {
 
@@ -73,7 +74,8 @@ const EnrolledClasses = () => {
             <div className="divider m-0 mb-5"></div>
 
             <div className="overflow-x-auto">
-                <table className="table">
+                {
+                    enrolledClasses.length > 0 ?  <table className="table">
                     <thead className="bg-[#dc034158] text-black font-bold">
                         <tr>
                             <th>
@@ -126,6 +128,13 @@ const EnrolledClasses = () => {
                     </tbody>
 
                 </table>
+                    : <div className="flex flex-col items-center justify-center mt-12">
+                    <img src={sadImg} width='100px' />
+                    <h3 className="font-light text-[#E80040]">Classes not found.</h3>
+                    <h1 className="text-3xl">Enroll your valuable classes!</h1>
+                </div>
+                }
+                
             </div>
 
         </>

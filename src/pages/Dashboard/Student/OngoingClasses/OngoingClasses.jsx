@@ -62,7 +62,7 @@ const OngoingClasses = () => {
                                 </td>
                                 <td>
                                     {
-                                        ongoingClass.date
+                                        ongoingClass.date.slice(0,10)
                                     }
                                 </td>
                             </tr>)

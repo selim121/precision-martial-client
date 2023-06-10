@@ -22,6 +22,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import OngoingClasses from "../pages/Dashboard/Student/OnGoingClasses/OnGoingClasses";
+import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
             {
                 path: 'ongoing-classes/:email',
                 element: <PrivateRoute><OngoingClasses></OngoingClasses></PrivateRoute>
+            },
+            {
+                path: 'payment-history',
+                element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
             }
         ]
     }
