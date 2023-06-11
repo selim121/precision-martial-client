@@ -20,7 +20,7 @@ const PopularInstructors = () => {
                 paragraph={'Join our Precision Martial and be healthy'}
             ></SectionTitle>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12">
+            <div className="flex flex-wrap gap-4">
                 {
                     popularInstructors && popularInstructors.map(popularInstructor => <PopularInstructorCard
                         key={popularInstructor._id}
