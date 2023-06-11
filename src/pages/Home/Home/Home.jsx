@@ -4,6 +4,7 @@ import WelcomePage from "../WelcomePage/WelcomePage";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Slider from "../Slider/Slider";
+import Membership from "../../Membership/Membership";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <WelcomePage></WelcomePage>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
+            <Membership></Membership>
         </div>
     );
 };

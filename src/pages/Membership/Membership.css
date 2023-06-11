@@ -1,0 +1,6 @@
+.membership-bg {
+    background-image: url('../../assets/images/header/membership.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
