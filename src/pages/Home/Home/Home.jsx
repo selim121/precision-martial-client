@@ -3,15 +3,17 @@ import Header from "../Header/Header";
 import WelcomePage from "../WelcomePage/WelcomePage";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
+import Slider from "../Slider/Slider";
 
 const Home = () => {
     return (
-        <>
-            <Header></Header>
+        <div className="pt-24">
+            {/* <Header></Header> */}
+            <Slider></Slider>
             <WelcomePage></WelcomePage>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
-        </>
+        </div>
     );
 };
 
