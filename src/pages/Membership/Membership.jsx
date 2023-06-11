@@ -6,7 +6,7 @@ import './Membership.css';
 
 const Membership = () => {
     return (
-        <div className="membership-bg bg-fixed py-8">
+        <div id="membership" className="membership-bg bg-fixed py-8">
             <div className="max-w-screen-lg mx-auto">
                 <SectionTitle
                     heading={'Membership Packages'}

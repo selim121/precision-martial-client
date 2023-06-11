@@ -15,7 +15,7 @@ const PopularInstructors = () => {
 
     
     return (
-        <div className="mb-12">
+        <div id="popularInstructors" className="mb-12">
             <div className="my-8">
             <SectionTitle
                 heading={'Popular Instructors'}
