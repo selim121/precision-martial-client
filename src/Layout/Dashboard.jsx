@@ -22,37 +22,10 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className='fixed w-full bg-white z-10 border-b-2 shadow-md'>
-                <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
-                    <div className="">
-                        <Logo></Logo>
-                    </div>
-                    <div className="mx-auto">
-                        <label htmlFor="menu" className="drawer-button lg:hidden flex items-center">
-
-                            <AiOutlineMenu size={'30'} className="cursor-pointer" color="E80040" />
-
-                        </label>
-                    </div>
-                    <div className="ms-auto me-5">
-                        <div className="dropdown dropdown-end">
-                            <div tabIndex={0} className="avatar cursor-pointer">
-                                <div className="w-8 rounded-full ring ring-[#E80040] ring-offset-base-100 ring-offset-2">
-                                    <img src={user && user.photoURL ? user.photoURL : emptyProfile} />
-                                </div>
-                            </div>
-                            {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                <Link onClick={logOut} to={'/sign-in'}>Sign Out</Link>
-                            </ul> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {
-                isAdmin ? <div className="drawer lg:drawer-open pt-24">
+                isAdmin ? <div className="drawer lg:drawer-open">
                     <input id="menu" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content px-5 lg:mt-20 w-full lg:w-3/4 absolute right-0">
+                    <div className="drawer-content px-5 w-full lg:w-3/4 absolute right-0">
                         <Outlet></Outlet>
                     </div>
                     <div className="drawer-side">
@@ -87,9 +60,9 @@ const Dashboard = () => {
 
                     :
 
-                    isInstructor ? <div className="drawer lg:drawer-open pt-24">
+                    isInstructor ? <div className="drawer lg:drawer-open">
                         <input id="menu" type="checkbox" className="drawer-toggle" />
-                        <div className="drawer-content px-10 lg:mt-20 w-full lg:w-4/5 absolute right-0">
+                        <div className="drawer-content px-10 w-full lg:w-4/5 absolute right-0">
 
                             <Outlet></Outlet>
 
@@ -132,7 +105,7 @@ const Dashboard = () => {
 
                         :
 
-                        <div className="drawer lg:drawer-open pt-24">
+                        <div className="drawer lg:drawer-open">
                             <input id="menu" type="checkbox" className="drawer-toggle" />
                             <div className="drawer-content px-5 w-full lg:w-3/4 absolute right-0">
                                 <Outlet></Outlet>
