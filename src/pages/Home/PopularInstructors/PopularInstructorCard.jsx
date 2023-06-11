@@ -16,7 +16,9 @@ const PopularInstructorCard = ({ popularInstructor }) => {
   return (
     <div className="mx-auto">
       <motion.div
-        className={`relative block shadow-xl rounded-lg py-3 w-72 cursor-pointer bg-[#dc034158]`}
+        className={`relative block shadow-xl rounded-lg  w-72 cursor-pointer bg-[#dc034158] ${
+            isExpanded ? 'h-[270px]' : 'h-[270px]'
+          }`}
         layoutId={popularInstructor.id}
         onClick={handleCardClick}
       >
@@ -58,14 +60,30 @@ const PopularInstructorCard = ({ popularInstructor }) => {
             </motion.div>
           ) : (
             <motion.div
-              className="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-auto w-64 h-64"
+              className="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-auto mt-4 pt-3 w-64 h-64"
               data-mdb-ripple="true"
               data-mdb-ripple-color="light"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <motion.img src={photo} className="w-full h-full" />
+              <div
+                className="w-full h-full"
+                style={{
+                  background: `url(${photo})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: '12px',
+                  transition: 'transform 0.3s',
+                  transform: 'scale(1)',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'scale(1.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'scale(1)';
+                }}
+              ></div>
             </motion.div>
           )}
         </AnimatePresence>
