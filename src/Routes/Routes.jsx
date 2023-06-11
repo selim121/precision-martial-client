@@ -23,6 +23,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import OngoingClasses from "../pages/Dashboard/Student/OnGoingClasses/OnGoingClasses";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
     }
 ]);
 
