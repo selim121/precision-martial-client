@@ -10,7 +10,7 @@ const Home = () => {
             <Header></Header>
             <WelcomePage></WelcomePage>
             <PopularClasses></PopularClasses>
-            {/* <PopularInstructors></PopularInstructors> */}
+            <PopularInstructors></PopularInstructors>
         </>
     );
 };

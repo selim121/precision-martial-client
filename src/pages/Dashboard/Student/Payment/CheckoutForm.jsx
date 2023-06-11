@@ -44,6 +44,18 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
                 console.log(error);
             });
     }
+    const handleTotalStudent = () => {
+        fetch(`https://precision-martial-server.vercel.app/instructorUpdate/${classPayment.instructorEmail}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(() => {
+                // console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
 
 
     const handleSubmit = async (event) => {
@@ -115,6 +127,7 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
                             .then(data => {
                                 if (data.deletedCount > 0) {
                                     handleSeatsUpdate();
+                                    handleTotalStudent();
                                     refetch();
                                 }
                             })

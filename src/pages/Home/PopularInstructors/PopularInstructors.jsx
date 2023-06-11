@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import PopularInstructorCard from "./PopularInstructorCard";
+import useAxiosSecure from "../../../hooks/UseAxiosSecure";
 
 const PopularInstructors = () => {
 
-    const [instructors, setInstructors] = useState();
+    const [axiosSecure] = useAxiosSecure();
 
-    useEffect(() => {
-        fetch('instructors.json')
-            .then(res => res.json())
-            .then(data => {
-                setInstructors(data);
-            })
-    }, [])
+    const { data: popularInstructors = [] } = useQuery(['popularInstructors'], async () => {
+        const res = await axiosSecure.get('/popularInstructors');
+        return res.data;
+    })
 
 
     return (
@@ -24,9 +22,9 @@ const PopularInstructors = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12">
                 {
-                    instructors && instructors.map(instructor => <PopularInstructorCard
-                        key={instructor.id}
-                        instructor={instructor}
+                    popularInstructors && popularInstructors.map(popularInstructor => <PopularInstructorCard
+                        key={popularInstructor._id}
+                        popularInstructor={popularInstructor}
                     ></PopularInstructorCard>)
                 }
             </div>

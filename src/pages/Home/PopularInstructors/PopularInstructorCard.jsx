@@ -4,9 +4,9 @@
 
 import { AiOutlineMail } from "react-icons/ai";
 
-const PopularInstructorCard = ({ instructor }) => {
+const PopularInstructorCard = ({ popularInstructor }) => {
 
-    const { image, name, email, numberOfClassesTaken } = instructor;
+    const { photo, name, email, totalStudents } = popularInstructor;
 
     return (
         <>
@@ -17,7 +17,7 @@ const PopularInstructorCard = ({ instructor }) => {
                         <div
                             className="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-auto mt-4 w-64 h-64"
                             data-mdb-ripple="true" data-mdb-ripple-color="light">
-                            <img src={image} className="w-full h-full" />
+                            <img src={photo} className="w-full h-full" />
                         </div>
                     </div>
                     <div className="px-6 py-3">
@@ -30,8 +30,8 @@ const PopularInstructorCard = ({ instructor }) => {
                         </div>
                         <hr />
                         <div className="mt-3 flex flex-col items-center justify-center">
-                            <p className="my-2 font-light">Total Classes: {numberOfClassesTaken}</p>
-                            <button className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">See Classes</button>
+                            <p className="my-2 font-light">Total Students: {totalStudents}</p>
+                            <button className="uppercase px-4 py-2 hover:bg-[#E80040] rounded-lg font-bold text-white border-b-4 border-[#E80040]">Read More</button>
                         </div>
                     </div>
                 </div>
