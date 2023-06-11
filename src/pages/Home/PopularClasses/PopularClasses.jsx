@@ -2,13 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import './PopularClasses.css';
 import PopularClassCard from "./PopularClassCard";
+import useAxiosSecure from "../../../hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const PopularClasses = () => {
 
-    const { data: classes = [] } = useQuery(['classes'], async () => {
-        const res = await fetch('https://precision-martial-server.vercel.app/classes');
-        return res.json();
-    });
+    const [axiosSecure] = useAxiosSecure();
+
+    const { data: popularClasses = [] } = useQuery(['popularClasses'], async () => {
+        const res = await axiosSecure.get('/popularClasses');
+        return res.data;
+    })
 
 
     return (
@@ -19,11 +23,14 @@ const PopularClasses = () => {
             ></SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-0 gap-y-12 mt-8">
                 {
-                    classes && classes.map(cls => <PopularClassCard
-                        key={cls.id}
-                        cls={cls}
+                    popularClasses && popularClasses.map(popularClass => <PopularClassCard
+                        key={popularClass.id}
+                        popularClass={popularClass}
                     ></PopularClassCard>)
                 }
+            </div>
+            <div className="mt-12 mb-5 text-center">
+                <Link to={'/classes'} className="px-6 py-3 hover:bg-[#E80040] rounded-lg font-bold text-white border-b-4 border-[#E80040]">More Class</Link>
             </div>
         </div>
     );

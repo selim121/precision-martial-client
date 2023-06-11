@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from 'sweetalert2';
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 
 const CheckoutForm = ({ price, classPayment, refetch }) => {
@@ -17,6 +17,9 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || `/dashboard/ongoing-classes/${user?.email}`;
 
     const { id } = useParams();
     const enrolledClassId = id;
@@ -30,16 +33,16 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
     }, [price])
 
     const handleSeatsUpdate = () => {
-        fetch(`https://precision-martial-server.vercel.app/confirmPayment/update/${classPayment.id}`,{
+        fetch(`https://precision-martial-server.vercel.app/confirmPayment/update/${classPayment.id}`, {
             method: 'PATCH'
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
+            .then(res => res.json())
+            .then(() => {
+                // console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
 
@@ -115,7 +118,7 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
                                     refetch();
                                 }
                             })
-
+                        navigate(from, { replace: true });
 
                         Swal.fire({
                             position: 'top-end',
@@ -124,6 +127,7 @@ const CheckoutForm = ({ price, classPayment, refetch }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+
                     }
                 })
         }

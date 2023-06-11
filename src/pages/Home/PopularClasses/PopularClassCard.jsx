@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-const PopularClassCard = ({ cls }) => {
+const PopularClassCard = ({ popularClass }) => {
 
-    const { photo, name, className, seats, price } = cls;
+    const { photo, name, className, seats, price, totalEnroll } = popularClass;
 
     return (
         <>
@@ -24,10 +24,11 @@ const PopularClassCard = ({ cls }) => {
                             </div>
                             <hr />
                             <div className="flex items-center justify-between">
-                                <p className="my-2 font-light">Available Seats: {seats}</p>
-                                <p className="text-[#E80040]">$ {price}</p>
+                                <p className="my-2 font-light">Available Seats: <span className="text-[#E80040]">{seats}</span></p>
+                                <p>Total Enroll: <span className="text-[#E80040]">{totalEnroll}</span></p>
                             </div>
-                            <div className="mt-3 flex justify-center items-center">
+                            <div className="mt-3 flex justify-between items-center">
+                                <p className="bg-[#E80040] bg-opacity-70 text-white px-4 py-2 rounded-lg">$ {price}</p>
                                 <button className="uppercase px-4 py-2 rounded-md hover:bg-[#981b1bd9] bg-[#E80040] text-white font-bold">Enroll Now</button>
                             </div>
                         </div>
@@ -51,10 +52,11 @@ const PopularClassCard = ({ cls }) => {
                                 </div>
                                 <hr />
                                 <div className="flex items-center justify-between">
-                                    <p className="my-2 font-light">Available Seats: {seats}</p>
-                                    <p className="text-[#E80040]">$ {price}</p>
+                                    <p className="my-2 font-light">Available Seats: <span className="text-[#E80040]">{seats}</span></p>
+                                    <p>Total Enroll: <span className="text-[#E80040]">{totalEnroll}</span></p>
                                 </div>
-                                <div className="mt-3 flex justify-center items-center">
+                                <div className="mt-3 flex justify-between items-center">
+                                    <p className="bg-[#E80040] bg-opacity-70 text-white px-4 py-2 rounded-lg">$ {price}</p>
                                     <button disabled className="uppercase px-4 py-2 rounded-md hover:bg-[#ff3939d9] bg-[#E80040] border-[#E80040] text-white font-bold">See Classes</button>
                                 </div>
                             </div>

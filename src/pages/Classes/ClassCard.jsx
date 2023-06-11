@@ -69,7 +69,7 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
                 (isDisabled || seats < 0 || isAdmin || isInstructor) ?
                     <div
                         className="mx-auto">
-                        <div className="relative block bg-slate-300 rounded-lg shadow-lg h-[465px] w-72">
+                        <div className="relative block bg-red-300 rounded-lg opacity-60 shadow-lg h-[465px] w-72">
                             <div className="flex">
                                 <div
                                     className="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-auto mt-4 w-64 h-64"

@@ -9,7 +9,7 @@ const Home = () => {
         <>
             <Header></Header>
             <WelcomePage></WelcomePage>
-            {/* <PopularClasses></PopularClasses> */}
+            <PopularClasses></PopularClasses>
             {/* <PopularInstructors></PopularInstructors> */}
         </>
     );
