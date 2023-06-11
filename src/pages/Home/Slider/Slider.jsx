@@ -22,8 +22,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide2} alt="Photo 1" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Train with best legends</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Train with best legends</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>
@@ -31,8 +31,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide3} alt="Photo 2" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Balance body & mind</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Balance body & mind</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>
@@ -40,8 +40,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide5} alt="Photo 2" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Discover the power</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Discover the power</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>
@@ -49,8 +49,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide4} alt="Photo 2" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Control body and mind</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Control body and mind</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>
@@ -58,8 +58,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide6} alt="Photo 2" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Beauty of movement</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Beauty of movement</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>
@@ -67,8 +67,8 @@ const Slider = () => {
                 <div className="slide-content" />
                 <img src={slide1} alt="Photo 2" className="" />
                 <div className="text-overlay lg:mt-36">
-                    <h3 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
-                    <h1 className='text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Artistry expression</h1>
+                    <h3 className="text-lg md:text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">Precision Martial</h3>
+                    <h1 className='text-lg md:text-4xl text-white bg-slate-700 rounded-xl px-5 py-2 my-3 uppercase'>Artistry expression</h1>
                     <Link to={'/classes'} className="text-[#E80040] uppercase border px-4 py-2 rounded-md hover:bg-[#E80040] hover:border-[#E80040] hover:text-white font-bold">Join Now</Link>
                 </div>
             </div>

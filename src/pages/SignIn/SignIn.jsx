@@ -131,7 +131,9 @@ const SignIn = () => {
                                 className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
                                     }`}
                                 placeholder="Enter your password"
-                                {...register("password", { required: "Password is required" })}
+                                {...register("password", { 
+                                    required: "Password is required"
+                                })}
                             />
                             <button
                                 type="button"

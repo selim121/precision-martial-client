@@ -174,7 +174,17 @@ const SignUp = () => {
                                     className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
                                         }`}
                                     placeholder="Enter your password"
-                                    {...register("password", { required: "Password is required" })}
+                                    {...register("password", 
+                                    { 
+                                        required: "Password is required", maxLength: {
+                                        value: 6,
+                                        message: "Password must be less than 6 characters",
+                                    }, 
+                                    pattern: {
+                                        value: /(?=.*[A-Z])(?=.*[!@#$%^&*])/,
+                                        message: "Password must contain at least one uppercase letter and one special character",
+                                    }
+                                })}
                                 />
                                 <button
                                     type="button"

@@ -5,7 +5,7 @@ import { IoMdCall } from 'react-icons/io';
 
 const WelcomePage = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center my-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center my-8 px-4'>
             <div className="ms-3 space-y-2">
                 <h1 className='text-3xl'>Welcome To Our <span className='bg-gradient-to-r from-[#E80040] via-[#e9a0b5] to-[#E80040] text-transparent bg-clip-text'>Precision Martial</span></h1>
                 <p className="text-justify text-sm">

@@ -1,10 +1,11 @@
 import { AiOutlineMenu } from 'react-icons/ai'
 import emptyProfile from '../../../assets/images/empty-profile.jpeg';
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import './Navbar.css';
 
 const NavItems = () => {
     const { user, logOut } = useAuth();
@@ -15,12 +16,12 @@ const NavItems = () => {
         localStorage.setItem('theme', theme);
         const localTheme = localStorage.getItem('theme');
         document.querySelector('html').setAttribute('data-theme', localTheme);
-    },[theme]);
+    }, [theme]);
 
     const handleTheme = (e) => {
-        if(e.target.checked) {
+        if (e.target.checked) {
             setTheme('dark');
-        }else {
+        } else {
             setTheme('light');
         }
     }
@@ -40,9 +41,16 @@ const NavItems = () => {
     return (
         <div className='relative me-5'>
             <div className='flex flex-row items-center gap-3'>
-                <Link className='hidden md:block' to={'/'}>Home</Link>
-                <Link className='hidden md:block' to={'/instructors'}>Instructors</Link>
-                <Link className='hidden md:block' to={'/classes'}>Classes</Link>
+                <NavLink exact to="/" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                    Home
+                </NavLink>
+                <NavLink to="/instructors" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                    Instructors
+                </NavLink>
+                <NavLink to="/classes" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                    Classes
+                </NavLink>
+
 
                 <label className="swap swap-rotate">
 
@@ -58,13 +66,13 @@ const NavItems = () => {
                 </label>
 
                 {
-                    (user && user?.email && isAdmin) && <Link className='hidden md:block' to={'/dashboard/admin-home'}>Dashboard</Link>
+                    (user && user?.email && isAdmin) && <Link className='hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5' to={'/dashboard/admin-home'}>Dashboard</Link>
                 }
                 {
-                    (user && user?.email && isInstructor) && <Link className='hidden md:block' to={'/dashboard/instructor-home'}>Dashboard</Link>
+                    (user && user?.email && isInstructor) && <Link className='hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5' to={'/dashboard/instructor-home'}>Dashboard</Link>
                 }
                 {
-                    (user && user?.email && !isAdmin && !isInstructor) && <Link className='hidden md:block' to={'/dashboard/student-home'}>Dashboard</Link>
+                    (user && user?.email && !isAdmin && !isInstructor) && <Link className='hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5' to={'/dashboard/student-home'}>Dashboard</Link>
                 }
                 <div
                     onClick={toggleOpen}

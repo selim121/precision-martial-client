@@ -1,4 +1,4 @@
-import headerImg from '../../assets/images/header/instruct.png';
+import headerImg from '../../assets/images/header/instructor.png';
 import { useQuery } from "@tanstack/react-query";
 import InstructorCard from './InstructorCard';
 import { Link } from 'react-router-dom';

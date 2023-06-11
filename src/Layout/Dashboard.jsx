@@ -22,6 +22,12 @@ const Dashboard = () => {
 
     return (
         <>
+            <div className="flex justify-center pt-5 lg:pt-0">
+                <label htmlFor="menu" className="drawer-button lg:hidden flex items-center">
+                    <AiOutlineMenu size={'30'} className="cursor-pointer" color="#E80040" />
+                </label>
+            </div>
+
             {
                 isAdmin ? <div className="drawer lg:drawer-open">
                     <input id="menu" type="checkbox" className="drawer-toggle" />
@@ -30,28 +36,28 @@ const Dashboard = () => {
                     </div>
                     <div className="drawer-side">
                         <label htmlFor="menu" className="drawer-overlay"></label>
-                        <ul className="menu py-4 px-2 w-58 lg:w-1/4 h-full lg:fixed mt-24 lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
+                        <ul className="menu py-4 px-2 w-58 lg:w-1/4 h-full lg:fixed lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
                             <div className="text-center py-4 mb-4 border-b-4 border-[#E80040]">
                                 <h1 className="text-3xl uppercase font-bold tracking-[3px]">Admin</h1>
                             </div>
                             <li><NavLink to={'/dashboard/admin-home'} className={'text-xl'}>
-                                <AiFillHome size={'20'} color="#E80040" /> Admin Home
+                                <AiFillHome size={'20'} color="#FFFFFF" /> Admin Home
                             </NavLink></li>
                             <li><NavLink to={'/dashboard/manage-classes'} className={'text-xl'}>
-                                <SiGoogleclassroom size={'20'} color="#E80040" /> Manage Classes
+                                <SiGoogleclassroom size={'20'} color="#FFFFFF" /> Manage Classes
                             </NavLink></li>
                             <li><NavLink to={'/dashboard/all-users'} className={'text-xl'}>
-                                <FaUsers size={'20'} color="#E80040" /> All Users
+                                <FaUsers size={'20'} color="#FFFFFF" /> All Users
                             </NavLink></li>
                             <div className="border-b-4 border-[#E80040] my-5"></div>
                             <li><NavLink to={'/'} className={'text-xl'}>
-                                <AiFillHome size={'20'} color="#E80040" />Home
+                                <AiFillHome size={'20'} color="#FFFFFF" />Home
                             </NavLink></li>
                             <li><NavLink to={'/instructors'} className={'text-xl'}>
-                                <GiTeacher size={'20'} color="#E80040" />Instructors
+                                <GiTeacher size={'20'} color="#FFFFFF" />Instructors
                             </NavLink></li>
                             <li><NavLink to={'/classes'} className={'text-xl'}>
-                                <SiGoogleclassroom size={'20'} color="#E80040" />Classes
+                                <SiGoogleclassroom size={'20'} color="#FFFFFF" />Classes
                             </NavLink></li>
                         </ul>
 
@@ -69,33 +75,33 @@ const Dashboard = () => {
                         </div>
                         <div className="drawer-side">
                             <label htmlFor="menu" className="drawer-overlay"></label>
-                            <ul className="menu p-4 w-60 lg:w-60 h-full lg:fixed mt-24 lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
+                            <ul className="menu p-4 w-60 lg:w-60 h-full lg:fixed lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
                                 <div className="text-center py-4 mb-4 border-b-4 border-[#E80040]">
                                     <h1 className="text-3xl uppercase font-bold tracking-[3px]">Instructor</h1>
                                 </div>
                                 <li>
                                     <NavLink to={'/dashboard/instructor-home'} className={'text-xl'}>
-                                        <AiFillHome size={'20'} color="#E80040" />My Home
+                                        <AiFillHome size={'20'} color="#FFFFFF" />My Home
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/dashboard/add-class'} className={'text-xl'}>
-                                        <IoIosAddCircle size={'20'} color="#E80040" /> Add Class
+                                        <IoIosAddCircle size={'20'} color="#FFFFFF" /> Add Class
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink to={'/dashboard/my-classes'} className={'text-xl'}>
-                                        <SiGoogleclassroom size={'20'} color="#E80040" /> My Class
+                                        <SiGoogleclassroom size={'20'} color="#FFFFFF" /> My Class
                                     </NavLink>
                                     <div className="border-b-4 border-[#E80040] my-5"></div>
-                                    <li><NavLink to={'/'} className={'text-xl'}>
-                                        <AiFillHome size={'20'} color="#E80040" />Home
+                                    <li><NavLink to={'/'} className={'text-xl p-0'}>
+                                        <AiFillHome size={'20'} color="#FFFFFF" />Home
                                     </NavLink></li>
-                                    <li><NavLink to={'/instructors'} className={'text-xl'}>
-                                        <GiTeacher size={'20'} color="#E80040" />Instructors
+                                    <li><NavLink to={'/instructors'} className={'text-xl p-0'}>
+                                        <GiTeacher size={'20'} color="#FFFFFF" />Instructors
                                     </NavLink></li>
-                                    <li><NavLink to={'/classes'} className={'text-xl'}>
-                                        <SiGoogleclassroom size={'20'} color="#E80040" />Classes
+                                    <li><NavLink to={'/classes'} className={'text-xl p-0'}>
+                                        <SiGoogleclassroom size={'20'} color="#FFFFFF" />Classes
                                     </NavLink></li>
                                 </li>
                             </ul>
@@ -112,31 +118,31 @@ const Dashboard = () => {
                             </div>
                             <div className="drawer-side">
                                 <label htmlFor="menu" className="drawer-overlay"></label>
-                                <ul className="menu p-4 w-58 lg:w-1/4 h-full lg:fixed mt-24 lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
+                                <ul className="menu p-4 w-58 lg:w-1/4 h-full lg:fixed lg:mt-0 bg-[#ec0a4a] lg:bg-[#dc034158] text-base-content">
                                     <div className="text-center py-4 mb-4 border-b-4 border-[#E80040]">
                                         <h1 className="text-3xl uppercase font-bold tracking-[3px]">Student</h1>
                                     </div>
                                     <li><NavLink to={'/dashboard/student-home'} className={'text-xl'}>
-                                        <AiFillHome size={'20'} color="#E80040" />My Home
+                                        <AiFillHome size={'20'} color="#FFFFFF" />My Home
                                     </NavLink></li>
                                     <li><NavLink to={'/dashboard/enrolled-classes'} className={'text-xl'}>
-                                        <BsCartPlusFill size={'20'} color="#E80040" />Enrolled Classes
+                                        <BsCartPlusFill size={'20'} color="#FFFFFF" />Enrolled Classes
                                     </NavLink></li>
                                     <li><NavLink to={`/dashboard/ongoing-classes/${user?.email}`} className={'text-xl'}>
-                                        <VscVmRunning size={'20'} color="#E80040" />Ongoing Class
+                                        <VscVmRunning size={'20'} color="#FFFFFF" />Ongoing Class
                                     </NavLink></li>
                                     <li><NavLink to={'/dashboard/payment-history'} className={'text-xl'}>
-                                        <FaHistory size={'20'} color="#E80040" />Payment History
+                                        <FaHistory size={'20'} color="#FFFFFF" />Payment History
                                     </NavLink></li>
                                     <div className="border-b-4 border-[#E80040] my-5"></div>
-                                    <li><NavLink to={'/'} className={'text-xl'}>
-                                        <AiFillHome size={'20'} color="#E80040" />Home
+                                    <li><NavLink to={'/'} className={'text-xl p-0'}>
+                                        <AiFillHome size={'20'} color="#FFFFFF" />Home
                                     </NavLink></li>
-                                    <li><NavLink to={'/instructors'} className={'text-xl'}>
-                                        <GiTeacher size={'20'} color="#E80040" />Instructors
+                                    <li><NavLink to={'/instructors'} className={'text-xl p-0'}>
+                                        <GiTeacher size={'20'} color="#FFFFFF" />Instructors
                                     </NavLink></li>
-                                    <li><NavLink to={'/classes'} className={'text-xl'}>
-                                        <SiGoogleclassroom size={'20'} color="#E80040" />Classes
+                                    <li><NavLink to={'/classes'} className={'text-xl p-0'}>
+                                        <SiGoogleclassroom size={'20'} color="#FFFFFF" />Classes
                                     </NavLink></li>
                                 </ul>
 

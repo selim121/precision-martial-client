@@ -14,7 +14,7 @@ const InstructorHome = () => {
         return res.data;
     })
 
-    const { name, email, phoneNumber, photo, gender } = myProfile;
+    const { name, email, phoneNumber, photo, gender, totalStudents } = myProfile;
 
     return (
         <>
@@ -33,6 +33,7 @@ const InstructorHome = () => {
                         <h5 className="text-xl">Email: <span className="font-light">{email}</span></h5>
                         <h5 className="text-xl">Phone: <span className="font-light">{phoneNumber}</span></h5>
                         <h5 className="text-xl">Gender: <span className="font-light">{gender}</span></h5>
+                        <h5 className="text-xl">Total Students: <span className="font-light">{totalStudents}</span></h5>
                     </div>
                 </div>
             </div>
