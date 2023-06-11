@@ -5,6 +5,7 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import Slider from "../Slider/Slider";
 import Membership from "../../Membership/Membership";
+import Review from "../../Review/Review";
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
             <Membership></Membership>
+            <Review></Review>
         </div>
     );
 };
