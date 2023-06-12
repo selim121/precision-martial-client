@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/UseAxiosSecure';
 import SectionTitle from '../../../../components/SectionTitle/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 const OngoingClasses = () => {
 
-    const {user} = useAuth();
+    const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
     const { data: ongoingClasses = [] } = useQuery(['ongoingClasses'], async () => {
@@ -15,6 +16,11 @@ const OngoingClasses = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Ongoing CLasses
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'Your Ongoing classes'}
                 paragraph={'Start today, success waiting for you'}
@@ -39,7 +45,7 @@ const OngoingClasses = () => {
                     <tbody className='bg-slate-300'>
                         {
                             ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr data-aos="fade-up"
-                            data-aos-duration="2000" key={ongoingClass._id}>
+                                data-aos-duration="2000" key={ongoingClass._id}>
                                 <td>
                                     <label>
                                         {index + 1}
@@ -63,7 +69,7 @@ const OngoingClasses = () => {
                                 </td>
                                 <td>
                                     {
-                                        ongoingClass.date.slice(0,10)
+                                        ongoingClass.date.slice(0, 10)
                                     }
                                 </td>
                             </tr>)

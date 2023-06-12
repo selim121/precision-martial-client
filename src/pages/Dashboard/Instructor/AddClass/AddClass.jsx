@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
 
@@ -58,8 +59,8 @@ const AddClass = () => {
                                 title: 'Class Add Successfully!',
                                 showConfirmButton: false,
                                 timer: 1500
-                              })
-                              
+                            })
+
                         }
                     })
             })
@@ -72,6 +73,11 @@ const AddClass = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Precision Martial - Add Class
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'Add A Class'}
                 paragraph={'Martial is a way of life, not just a sport'}

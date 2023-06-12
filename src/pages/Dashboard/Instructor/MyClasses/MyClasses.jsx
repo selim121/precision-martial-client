@@ -5,6 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from 'sweetalert2';
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
 
@@ -80,6 +81,11 @@ const MyClasses = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Precision Martial - My Class
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'My Classes'}
                 paragraph={'Here is my all valuable classes'}

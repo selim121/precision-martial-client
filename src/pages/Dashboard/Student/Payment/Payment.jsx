@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useParams } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 const Payment = () => {
@@ -21,6 +22,11 @@ const Payment = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Payment
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'Payment'}
                 paragraph={'Process payment and start your class'}

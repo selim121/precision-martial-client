@@ -3,6 +3,7 @@ import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import { useQuery } from '@tanstack/react-query';
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const StudentHome = () => {
 
@@ -19,6 +20,11 @@ const StudentHome = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Student Home
+                </title>
+            </Helmet>
             <SectionTitle
                 heading='My Profile'
             ></SectionTitle>

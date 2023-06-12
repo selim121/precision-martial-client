@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from 'sweetalert2'
 import { toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
     const {
@@ -75,7 +76,7 @@ const SignUp = () => {
                                     title: 'Signup successful',
                                     showConfirmButton: false,
                                     timer: 1500
-                                  })
+                                })
                                 navigate(from, { replace: true });
                             })
                             .catch(err => {
@@ -112,188 +113,195 @@ const SignUp = () => {
     }
 
     return (
-        <div
-            className="grid grid-cols-1 md:grid-cols-2 items-center justify-center md:justify-start md:ps-8 min-h-[130vh] md:min-h-screen bg-cover"
-            style={{
-                backgroundImage: `url(${login})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
+        <>
+            <Helmet>
+                <title>
+                    Precision Martial - Sign Up
+                </title>
+            </Helmet>
+            <div
+                className="grid grid-cols-1 md:grid-cols-2 items-center justify-center md:justify-start md:ps-8 min-h-[130vh] md:min-h-screen bg-cover"
+                style={{
+                    backgroundImage: `url(${login})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
 
-        >
-            <div className="w-full p-8 bg-white rounded-lg shadow-xl">
-                <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text" >Precision Martial</h2>
+            >
+                <div className="w-full p-8 bg-white rounded-lg shadow-xl">
+                    <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text" >Precision Martial</h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="mb-4">
-                            <label htmlFor="name" className="block mb-1">
-                                Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                className={`w-full px-4 py-2 border rounded-lg ${errors.name ? "border-red-500" : ""
-                                    }`}
-                                placeholder="Enter your name"
-                                {...register("name", { required: "name is required" })}
-                            />
-                            {errors.email && (
-                                <p className="text-red-500">{errors.email.message}</p>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="email" className="block mb-1">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                className={`w-full px-4 py-2 border rounded-lg ${errors.email ? "border-red-500" : ""
-                                    }`}
-                                placeholder="Enter your email"
-                                {...register("email", { required: "Email is required" })}
-                            />
-                            {errors.email && (
-                                <p className="text-red-500">{errors.email.message}</p>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="mb-4">
-                            <label htmlFor="password" className="block mb-1">
-                                Password
-                            </label>
-
-                            <div className="relative">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block mb-1">
+                                    Name
+                                </label>
                                 <input
-                                    type={showPassword ? "text" : "password"}
-                                    id="password"
-                                    className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
+                                    type="text"
+                                    id="name"
+                                    className={`w-full px-4 py-2 border rounded-lg ${errors.name ? "border-red-500" : ""
                                         }`}
-                                    placeholder="Enter your password"
-                                    {...register("password", 
-                                    { 
-                                        required: "Password is required", maxLength: {
-                                        value: 6,
-                                        message: "Password must be less than 6 characters",
-                                    }, 
-                                    pattern: {
-                                        value: /(?=.*[A-Z])(?=.*[!@#$%^&*])/,
-                                        message: "Password must contain at least one uppercase letter and one special character",
-                                    }
-                                })}
+                                    placeholder="Enter your name"
+                                    {...register("name", { required: "name is required" })}
                                 />
-                                <button
-                                    type="button"
-                                    onClick={togglePasswordVisibility}
-                                    className="absolute top-2 right-2 focus:outline-none"
-                                >
-                                    {showPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
-                                </button>
-                            </div>
-
-
-                            {errors.password && (
-                                <p className="text-red-500">{errors.password.message}</p>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="confirmPassword" className="block mb-1">
-                                Confirm Password
-                            </label>
-
-                            <div className="relative">
-                                <input
-                                    type={showConfirmPassword ? "text" : "password"}
-                                    id="confirmPassword"
-                                    className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
-                                        }`}
-                                    placeholder="Enter your password"
-                                    {...register("confirmPassword", {
-                                        required: "Confirm Password is required", validate: (value) =>
-                                            value === password || "Passwords do not match",
-                                    })}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={toggleConfirmPasswordVisibility}
-                                    className="absolute top-2 right-2 focus:outline-none"
-                                >
-                                    {showConfirmPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
-                                </button>
-
-                                {errors.confirmPassword && (
-                                    <p className="text-red-500">{errors.confirmPassword.message}</p>
+                                {errors.email && (
+                                    <p className="text-red-500">{errors.email.message}</p>
                                 )}
                             </div>
 
-
-                            {errors.password && (
-                                <p className="text-red-500">{errors.password.message}</p>
-                            )}
+                            <div className="mb-4">
+                                <label htmlFor="email" className="block mb-1">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    className={`w-full px-4 py-2 border rounded-lg ${errors.email ? "border-red-500" : ""
+                                        }`}
+                                    placeholder="Enter your email"
+                                    {...register("email", { required: "Email is required" })}
+                                />
+                                {errors.email && (
+                                    <p className="text-red-500">{errors.email.message}</p>
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="mb-4 flex items-center gap-8">
-                            <label htmlFor="gender">Gender:</label>
-                            <select id="gender" {...register("gender")}>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="mb-4">
+                                <label htmlFor="password" className="block mb-1">
+                                    Password
+                                </label>
+
+                                <div className="relative">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        id="password"
+                                        className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
+                                            }`}
+                                        placeholder="Enter your password"
+                                        {...register("password",
+                                            {
+                                                required: "Password is required", maxLength: {
+                                                    value: 6,
+                                                    message: "Password must be less than 6 characters",
+                                                },
+                                                pattern: {
+                                                    value: /(?=.*[A-Z])(?=.*[!@#$%^&*])/,
+                                                    message: "Password must contain at least one uppercase letter and one special character",
+                                                }
+                                            })}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={togglePasswordVisibility}
+                                        className="absolute top-2 right-2 focus:outline-none"
+                                    >
+                                        {showPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
+                                    </button>
+                                </div>
+
+
+                                {errors.password && (
+                                    <p className="text-red-500">{errors.password.message}</p>
+                                )}
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="confirmPassword" className="block mb-1">
+                                    Confirm Password
+                                </label>
+
+                                <div className="relative">
+                                    <input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        id="confirmPassword"
+                                        className={`w-full px-4 py-2 border rounded-lg ${errors.password ? "border-red-500" : ""
+                                            }`}
+                                        placeholder="Enter your password"
+                                        {...register("confirmPassword", {
+                                            required: "Confirm Password is required", validate: (value) =>
+                                                value === password || "Passwords do not match",
+                                        })}
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={toggleConfirmPasswordVisibility}
+                                        className="absolute top-2 right-2 focus:outline-none"
+                                    >
+                                        {showConfirmPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
+                                    </button>
+
+                                    {errors.confirmPassword && (
+                                        <p className="text-red-500">{errors.confirmPassword.message}</p>
+                                    )}
+                                </div>
+
+
+                                {errors.password && (
+                                    <p className="text-red-500">{errors.password.message}</p>
+                                )}
+                            </div>
                         </div>
 
-                        <div className="mb-4">
-                            <label htmlFor="phoneNumber">Phone Number</label>
-                            <input
-                                type="tel"
-                                id="phoneNumber"
-                                className={`w-full px-4 py-2 border rounded-lg ${errors.name ? "border-red-500" : ""
-                                    }`}
-                                placeholder="Enter your phone number"
-                                {...register("phoneNumber", {
-                                    required: "Phone Number is required",
-                                    pattern: {
-                                        value: /^[0-9]{11}$/,
-                                        message: "Invalid phone number",
-                                    },
-                                })}
-                            />
-                            {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="mb-4 flex items-center gap-8">
+                                <label htmlFor="gender">Gender:</label>
+                                <select id="gender" {...register("gender")}>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="phoneNumber">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="phoneNumber"
+                                    className={`w-full px-4 py-2 border rounded-lg ${errors.name ? "border-red-500" : ""
+                                        }`}
+                                    placeholder="Enter your phone number"
+                                    {...register("phoneNumber", {
+                                        required: "Phone Number is required",
+                                        pattern: {
+                                            value: /^[0-9]{11}$/,
+                                            message: "Invalid phone number",
+                                        },
+                                    })}
+                                />
+                                {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber.message}</p>}
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="mb-4 flex gap-2">
-                        <label htmlFor="photo">Photo</label>
-                        <input type="file" id="photo" {...register("photo")} />
-                    </div>
+                        <div className="mb-4 flex gap-2">
+                            <label htmlFor="photo">Photo</label>
+                            <input type="file" id="photo" {...register("photo")} />
+                        </div>
 
-                    <div className="text-center">
-                        <button className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]" type="submit">Register</button>
-                    </div>
-                </form>
-                <div className="divider">OR</div>
+                        <div className="text-center">
+                            <button className="uppercase px-4 py-2 rounded-md bg-[#E80040] text-white font-bold hover:bg-[#E10020]" type="submit">Register</button>
+                        </div>
+                    </form>
+                    <div className="divider">OR</div>
 
-                <div className="flex items-center justify-center">
-                    <button
-                        className="flex items-center gap-2 px-4 py-2 bg-[#E80040] text-white font-bold hover:bg-[#E10020] rounded-lg mr-4"
-                        onClick={handleGoogleSignIn}
-                    >
-                        <AiFillGoogleCircle size={'20px'} />
-                        Sign in with Google
-                    </button>
-                    {/* Add your Google sign-in button implementation here */}
-                </div>
-                <div className="pt-4 flex items-center justify-center">
-                    <p>Already have an account? <Link to={'/sign-in'} className="text-[#E80040]">Sign In</Link></p>
+                    <div className="flex items-center justify-center">
+                        <button
+                            className="flex items-center gap-2 px-4 py-2 bg-[#E80040] text-white font-bold hover:bg-[#E10020] rounded-lg mr-4"
+                            onClick={handleGoogleSignIn}
+                        >
+                            <AiFillGoogleCircle size={'20px'} />
+                            Sign in with Google
+                        </button>
+                        {/* Add your Google sign-in button implementation here */}
+                    </div>
+                    <div className="pt-4 flex items-center justify-center">
+                        <p>Already have an account? <Link to={'/sign-in'} className="text-[#E80040]">Sign In</Link></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../hooks/UseAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
@@ -15,6 +16,11 @@ const PaymentHistory = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Payment History
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'Your Payment History'}
                 paragraph={'See, when and why you pay us'}
@@ -35,13 +41,13 @@ const PaymentHistory = () => {
                     <tbody className="bg-slate-100">
                         {
                             ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr data-aos="fade-up"
-                            data-aos-duration="2000" key={ongoingClass._id}>
-                                <td>{index+1}</td>
+                                data-aos-duration="2000" key={ongoingClass._id}>
+                                <td>{index + 1}</td>
                                 <td>{ongoingClass.className}</td>
                                 <td>{ongoingClass.email}</td>
                                 <td>{ongoingClass.price}</td>
                                 <td>{ongoingClass.transactionId}</td>
-                                <td>{ongoingClass.date.slice(0,10)}</td>
+                                <td>{ongoingClass.date.slice(0, 10)}</td>
                             </tr>)
                         }
                     </tbody>

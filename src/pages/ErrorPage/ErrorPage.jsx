@@ -1,9 +1,15 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
-    
+
     return (
         <>
+            <Helmet>
+                <title>
+                    404 - Not Found
+                </title>
+            </Helmet>
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12 col-md-12 mt-5 mb-5">

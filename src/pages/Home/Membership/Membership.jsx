@@ -1,7 +1,7 @@
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import regular from '../../assets/images/gallery/regular.jpeg';
-import pro from '../../assets/images/gallery/pro.jpeg';
-import premium from '../../assets/images/gallery/premium.jpeg';
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import regular from '../../../assets/images/gallery/regular.jpeg';
+import pro from '../../../assets/images/gallery/pro.jpeg';
+import premium from '../../../assets/images/gallery/premium.jpeg';
 import './Membership.css';
 
 const Membership = () => {

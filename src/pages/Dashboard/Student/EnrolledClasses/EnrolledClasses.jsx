@@ -6,12 +6,13 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
 import sadImg from '../../../../assets/images/others/sad.png';
+import { Helmet } from "react-helmet-async";
 
 const EnrolledClasses = () => {
 
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
-    
+
 
     const { data: enrolledClasses = [], refetch } = useQuery(['enrolledClasses'], async () => {
         const res = await axiosSecure.get(`/enrolledClasses/${user?.email}`);
@@ -65,7 +66,12 @@ const EnrolledClasses = () => {
     }
 
     return (
-        <> 
+        <>
+            <Helmet>
+                <title>
+                    Precision Martial - Enrolled Classes
+                </title>
+            </Helmet>
             <SectionTitle
                 heading={'Your Enrolled Classes'}
                 paragraph={'You can pay or remove classes'}
@@ -75,67 +81,67 @@ const EnrolledClasses = () => {
 
             <div className="overflow-x-auto">
                 {
-                    enrolledClasses.length > 0 ?  <table className="table">
-                    <thead className="bg-[#dc034158] text-black font-bold">
-                        <tr>
-                            <th>
-                                <label>
-                                    #
-                                </label>
-                            </th>
-                            <th>Photo</th>
-                            <th>Class Name</th>
-                            <th>Price</th>
-                            <th>Available Seats</th>
-                            <th>Payment</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            enrolledClasses && enrolledClasses.map((enrolledClass, index) => <tr data-aos="fade-up"
-                            data-aos-duration="2000" key={enrolledClass._id}>
-                                <td>
+                    enrolledClasses.length > 0 ? <table className="table">
+                        <thead className="bg-[#dc034158] text-black font-bold">
+                            <tr>
+                                <th>
                                     <label>
-                                        {index + 1}
+                                        #
                                     </label>
-                                </td>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={enrolledClass.photo} />
+                                </th>
+                                <th>Photo</th>
+                                <th>Class Name</th>
+                                <th>Price</th>
+                                <th>Available Seats</th>
+                                <th>Payment</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                enrolledClasses && enrolledClasses.map((enrolledClass, index) => <tr data-aos="fade-up"
+                                    data-aos-duration="2000" key={enrolledClass._id}>
+                                    <td>
+                                        <label>
+                                            {index + 1}
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={enrolledClass.photo} />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {enrolledClass.className}
-                                </td>
-                                <td className="text-end">
-                                    $ {enrolledClass.price}
-                                </td>
-                                <td className="text-center">
-                                    {enrolledClass.seats}
-                                </td>
-                                <td>
-                                    <Link to={`/dashboard/payment/${enrolledClass._id}`} className="bg-amber-400 px-4 py-2 rounded-lg hover:opacity-50">Pay</Link>
-                                </td>
-                                <td >
-                                    <button onClick={() => handleDelete(enrolledClass._id)} className="bg-slate-200 p-2 rounded-lg hover:opacity-50">
-                                        <AiFillDelete size={'30'} color="red" />
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
+                                    </td>
+                                    <td>
+                                        {enrolledClass.className}
+                                    </td>
+                                    <td className="text-end">
+                                        $ {enrolledClass.price}
+                                    </td>
+                                    <td className="text-center">
+                                        {enrolledClass.seats}
+                                    </td>
+                                    <td>
+                                        <Link to={`/dashboard/payment/${enrolledClass._id}`} className="bg-amber-400 px-4 py-2 rounded-lg hover:opacity-50">Pay</Link>
+                                    </td>
+                                    <td >
+                                        <button onClick={() => handleDelete(enrolledClass._id)} className="bg-slate-200 p-2 rounded-lg hover:opacity-50">
+                                            <AiFillDelete size={'30'} color="red" />
+                                        </button>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
 
-                </table>
-                    : <div className="flex flex-col items-center justify-center mt-12">
-                    <img src={sadImg} width='100px' />
-                    <h3 className="font-light text-[#E80040]">Classes not found.</h3>
-                    <h1 className="text-3xl">Enroll your valuable classes!</h1>
-                </div>
+                    </table>
+                        : <div className="flex flex-col items-center justify-center mt-12">
+                            <img src={sadImg} width='100px' />
+                            <h3 className="font-light text-[#E80040]">Classes not found.</h3>
+                            <h1 className="text-3xl">Enroll your valuable classes!</h1>
+                        </div>
                 }
-                
+
             </div>
 
         </>

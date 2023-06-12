@@ -2,6 +2,7 @@ import headerImg from '../../assets/images/header/instructor.png';
 import { useQuery } from "@tanstack/react-query";
 import InstructorCard from './InstructorCard';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Instructors = () => {
 
@@ -12,6 +13,11 @@ const Instructors = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Instructors
+                </title>
+            </Helmet>
             <div className="hero h-[450px]" style={{ backgroundImage: `url(${headerImg})` }}>
                 <div className="hero-overlay bg-opacity-50"></div>
                 <div className="hero-content text-center text-neutral-content mt-24">

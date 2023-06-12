@@ -1,8 +1,8 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import img1 from '../../assets/images/students/sabbir.jpeg';
-import img2 from '../../assets/images/students/img2.webp';
-import img3 from '../../assets/images/students/img3.jpeg';
+import img1 from '../../../assets/images/students/sabbir.jpeg';
+import img2 from '../../../assets/images/students/img2.webp';
+import img3 from '../../../assets/images/students/img3.jpeg';
 import { FaQuoteRight } from 'react-icons/fa';
 import Typewriter from 'typewriter-effect';
 

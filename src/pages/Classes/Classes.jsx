@@ -4,9 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import ClassCard from './ClassCard';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
 
     const { data: classes = [], isLoading: isClassesLoading } = useQuery(['classes'], async () => {
         const res = await fetch('https://precision-martial-server.vercel.app/approved-classes');
@@ -14,7 +15,7 @@ const Classes = () => {
     });
 
     const { data: enrolledClasses = [], refetch, isLoading } = useQuery({
-        queryKey: ['enrolledClasses', user?.email], 
+        queryKey: ['enrolledClasses', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
             const res = await axios(`https://precision-martial-server.vercel.app/enrolledClasses/${user?.email}`);
@@ -26,6 +27,11 @@ const Classes = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Precision Martial - Classes
+                </title>
+            </Helmet>
             <div className="hero h-[450px]" style={{ backgroundImage: `url(${headerImg})` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content mt-24">
