@@ -82,13 +82,18 @@ const SignUp = () => {
                             .catch(err => {
                                 setLoading(false)
                                 console.log(err.message)
-                                toast.error(err.message)
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'Error',
+                                    title: 'Something Wrong!',
+                                    showConfirmButton: false,
+                                    timer: 500
+                                })
                             })
                     })
                     .catch(err => {
                         setLoading(false)
                         console.log(err.message)
-                        toast.error(err.message)
                     })
             })
             .catch(err => {
@@ -237,11 +242,6 @@ const SignUp = () => {
                                         <p className="text-red-500">{errors.confirmPassword.message}</p>
                                     )}
                                 </div>
-
-
-                                {errors.password && (
-                                    <p className="text-red-500">{errors.password.message}</p>
-                                )}
                             </div>
                         </div>
 

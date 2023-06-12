@@ -45,7 +45,13 @@ const SignIn = () => {
             .catch(err => {
                 setLoading(false)
                 console.log(err.message)
-                toast.error(err.message)
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'Error',
+                    title: 'Something Wrong!',
+                    showConfirmButton: false,
+                    timer: 500
+                })
             })
     };
 
@@ -150,7 +156,6 @@ const SignIn = () => {
                                     {showPassword ? <AiFillEye size={'25px'} /> : <AiFillEyeInvisible size={'25px'} />}
                                 </button>
                             </div>
-
 
                             {errors.password && (
                                 <p className="text-red-500">{errors.password.message}</p>
