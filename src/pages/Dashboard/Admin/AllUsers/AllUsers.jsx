@@ -94,7 +94,8 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users && users.map((user, index) => <tr key={user._id}>
+                            users && users.map((user, index) => <tr data-aos="fade-up"
+                            data-aos-duration="1000" key={user._id}>
                                 <td>
                                     <label>
                                         {index + 1}

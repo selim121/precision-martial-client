@@ -13,7 +13,7 @@ const Membership = () => {
                     paragraph={'Join our training club and rise to a new challenge'}
                 ></SectionTitle>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-8 gap-y-4 lg:gap-y-0 ">
-                    <div className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div data-aos="fade-right" data-aos-duration="2000" className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <img className="rounded-t-lg w-full" src={regular} />
                         <div className="py-3 bg-black text-center">
                             <h2 className="text-3xl text-white uppercase">Beginner</h2>
@@ -47,7 +47,8 @@ const Membership = () => {
                             <button className="uppercase text-white bg-[#E80040] w-full py-3 rounded-b-lg">Get Now</button>
                         </div>
                     </div>
-                    <div className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div data-aos="fade-up"
+                        data-aos-duration="2000" className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <img className="rounded-t-lg w-full" src={pro} />
                         <div className="py-3 bg-[#E80040] text-center">
                             <h2 className="text-3xl text-white uppercase">Pro</h2>
@@ -81,7 +82,7 @@ const Membership = () => {
                             <button className="uppercase text-white bg-[#E80040] w-full py-3 rounded-b-lg">Get Now</button>
                         </div>
                     </div>
-                    <div className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div data-aos="fade-left" data-aos-duration="2000" className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <img className="rounded-t-lg w-full" src={premium} />
                         <div className="py-3 bg-black text-center">
                             <h2 className="text-3xl text-white uppercase">Premium</h2>

@@ -38,7 +38,8 @@ const OngoingClasses = () => {
                     </thead>
                     <tbody className='bg-slate-300'>
                         {
-                            ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr key={ongoingClass._id}>
+                            ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr data-aos="fade-up"
+                            data-aos-duration="2000" key={ongoingClass._id}>
                                 <td>
                                     <label>
                                         {index + 1}

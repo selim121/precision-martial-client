@@ -14,7 +14,8 @@ const PopularInstructorCard = ({ popularInstructor }) => {
   };
 
   return (
-    <div className="mx-auto">
+    <div data-aos="fade-up"
+    data-aos-anchor-placement="top-center" className="mx-auto">
       <motion.div
         className={`relative block shadow-xl rounded-lg  w-72 cursor-pointer bg-[#dc034158] ${
             isExpanded ? 'h-[270px]' : 'h-[270px]'

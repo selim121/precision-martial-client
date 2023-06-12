@@ -93,7 +93,8 @@ const EnrolledClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            enrolledClasses && enrolledClasses.map((enrolledClass, index) => <tr key={enrolledClass._id}>
+                            enrolledClasses && enrolledClasses.map((enrolledClass, index) => <tr data-aos="fade-up"
+                            data-aos-duration="2000" key={enrolledClass._id}>
                                 <td>
                                     <label>
                                         {index + 1}

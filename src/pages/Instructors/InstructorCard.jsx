@@ -7,7 +7,7 @@ const InstructorCard = ({instructor}) => {
     console.log(instructor);
 
     return (
-        <div
+        <div data-aos="zoom-in" data-aos-duration="2000"
             className="mx-auto">
             <div className="relative block bg-[#dc034158] rounded-lg shadow-lg h-[450px] w-72">
                 <div className="flex">

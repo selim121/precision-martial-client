@@ -34,7 +34,8 @@ const PaymentHistory = () => {
                     </thead>
                     <tbody className="bg-slate-100">
                         {
-                            ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr key={ongoingClass._id}>
+                            ongoingClasses && ongoingClasses.map((ongoingClass, index) => <tr data-aos="fade-up"
+                            data-aos-duration="2000" key={ongoingClass._id}>
                                 <td>{index+1}</td>
                                 <td>{ongoingClass.className}</td>
                                 <td>{ongoingClass.email}</td>

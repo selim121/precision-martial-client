@@ -7,9 +7,9 @@ import Typewriter from 'typewriter-effect';
 const WelcomePage = () => {
     return (
         <div id='about' className='grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center my-8 px-4'>
-            <div className="ms-3 space-y-2">
-            <h1 className='text-3xl bg-gradient-to-r from-[#E80040] via-[#e9a0b5] to-[#E80040] text-transparent bg-clip-text'>
-                <Typewriter
+            <div data-aos="fade-right" className="ms-3 space-y-2">
+                <h1 className='text-3xl bg-gradient-to-r from-[#E80040] via-[#e9a0b5] to-[#E80040] text-transparent bg-clip-text'>
+                    <Typewriter
                         options={{
                             strings: ['Welcome To Our Precision Martial'],
                             autoStart: true,
@@ -18,7 +18,7 @@ const WelcomePage = () => {
                         }}
                     />
                 </h1>
-                
+
                 <p className="text-justify text-sm">
                     At Precision Martial, we are dedicated to providing top-notch martial arts training for all ages and skill levels. <br /> <br />
 
@@ -35,7 +35,7 @@ const WelcomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className="">
+            <div data-aos="fade-left" className="">
                 <img src={img1} alt="" />
             </div>
         </div>

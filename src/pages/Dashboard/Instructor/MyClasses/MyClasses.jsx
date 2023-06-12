@@ -86,7 +86,8 @@ const MyClasses = () => {
             ></SectionTitle>
             <hr />
             {
-                myClasses ? myClasses.map(myClass => <div key={myClass._id} className="p-3 mt-8 bg-base-200">
+                myClasses ? myClasses.map(myClass => <div data-aos="fade-up"
+                    data-aos-duration="2000" key={myClass._id} className="p-3 mt-8 bg-base-200">
                     <div className="flex justify-center lg:justify-start flex-col lg:flex-row  gap-4">
                         <img src={myClass.photo} className="w-80 h-96 lg:w-56 lg:h-60 rounded-lg shadow-2xl" />
                         <div>
@@ -181,7 +182,7 @@ const MyClasses = () => {
                                     </>
                                 ) : null
                             }
-                                </div>
+                        </div>
 
                         {
                             myClass.status === 'deny' && <div className="text-center bg-white ">
@@ -190,8 +191,8 @@ const MyClasses = () => {
                                     <p className="">
                                         {myClass.feedback}
                                     </p>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
                         }
                     </div>
                 </div>)

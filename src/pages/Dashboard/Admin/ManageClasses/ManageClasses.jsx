@@ -118,7 +118,8 @@ const ManageClasses = () => {
             <hr />
             <div className="mt-5">
                 {
-                    allClasses && allClasses.map(allClass => <div key={allClass._id} className="p-3 mt-12 bg-base-200">
+                    allClasses && allClasses.map(allClass => <div data-aos="fade-up"
+                    data-aos-duration="2000" key={allClass._id} className="p-3 mt-12 bg-base-200">
                         <div className="flex justify-center lg:justify-start flex-col lg:flex-row  gap-4">
                             <img src={allClass.photo} className="w-80 h-96 lg:w-56 lg:h-60 rounded-lg shadow-2xl" />
                             <div className="space-y-1">

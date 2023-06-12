@@ -67,7 +67,8 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
         <>
             {
                 (isDisabled || seats < 0 || isAdmin || isInstructor) ?
-                    <div
+                    <div data-aos="zoom-in-up"
+                    data-aos-duration="2000"
                         className="mx-auto">
                         <div className="relative block bg-red-300 rounded-lg opacity-60 shadow-lg h-[465px] w-72">
                             <div className="flex">
@@ -94,7 +95,8 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
                         </div>
                     </div>
                     :
-                    <div
+                    <div data-aos="zoom-in-up"
+                    data-aos-duration="2000"
                         className="mx-auto">
                         <div className="relative block bg-slate-300 rounded-lg shadow-lg h-[465px] w-72">
                             <div className="flex">
