@@ -82,7 +82,7 @@ const Membership = () => {
                             <button className="uppercase text-white bg-[#E80040] w-full py-3 rounded-b-lg">Get Now</button>
                         </div>
                     </div>
-                    <div data-aos="fade-left" data-aos-duration="2000" className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+                    <div data-aos="fade-top" data-aos-duration="2000" className="block w-full md:w-80 rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                         <img className="rounded-t-lg w-full" src={premium} />
                         <div className="py-3 bg-black text-center">
                             <h2 className="text-3xl text-white uppercase">Premium</h2>
