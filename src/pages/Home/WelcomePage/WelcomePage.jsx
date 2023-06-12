@@ -2,12 +2,23 @@
 import img1 from '../../../assets/images/img-1.png';
 import { MdLocationPin } from 'react-icons/md';
 import { IoMdCall } from 'react-icons/io';
+import Typewriter from 'typewriter-effect';
 
 const WelcomePage = () => {
     return (
         <div id='about' className='grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center my-8 px-4'>
             <div className="ms-3 space-y-2">
-                <h1 className='text-3xl'>Welcome To Our <span className='bg-gradient-to-r from-[#E80040] via-[#e9a0b5] to-[#E80040] text-transparent bg-clip-text'>Precision Martial</span></h1>
+            <h1 className='text-3xl bg-gradient-to-r from-[#E80040] via-[#e9a0b5] to-[#E80040] text-transparent bg-clip-text'>
+                <Typewriter
+                        options={{
+                            strings: ['Welcome To Our Precision Martial'],
+                            autoStart: true,
+                            loop: true,
+                            deleteSpeed: 'natural',
+                        }}
+                    />
+                </h1>
+                
                 <p className="text-justify text-sm">
                     At Precision Martial, we are dedicated to providing top-notch martial arts training for all ages and skill levels. <br /> <br />
 
@@ -15,7 +26,7 @@ const WelcomePage = () => {
                 </p>
                 <div className="flex pt-2 gap-5">
                     <div className="flex items-center text-sm gap-1">
-                        <MdLocationPin  size='20px' color='#E80040'/>
+                        <MdLocationPin size='20px' color='#E80040' />
                         <p className='italic'>10/7 Shekhertek, Adabor, Dhaka - 1207</p>
                     </div>
                     <div className="flex items-center text-sm gap-1">

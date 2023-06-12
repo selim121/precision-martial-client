@@ -135,13 +135,13 @@ const Dashboard = () => {
                                         <FaHistory size={'20'} color="#FFFFFF" />Payment History
                                     </NavLink></li>
                                     <div className="border-b-4 border-[#E80040] my-5"></div>
-                                    <li><NavLink to={'/'} className={'text-xl p-0'}>
+                                    <li><NavLink to={'/'} className={'text-xl'}>
                                         <AiFillHome size={'20'} color="#FFFFFF" />Home
                                     </NavLink></li>
-                                    <li><NavLink to={'/instructors'} className={'text-xl p-0'}>
+                                    <li><NavLink to={'/instructors'} className={'text-xl'}>
                                         <GiTeacher size={'20'} color="#FFFFFF" />Instructors
                                     </NavLink></li>
-                                    <li><NavLink to={'/classes'} className={'text-xl p-0'}>
+                                    <li><NavLink to={'/classes'} className={'text-xl'}>
                                         <SiGoogleclassroom size={'20'} color="#FFFFFF" />Classes
                                     </NavLink></li>
                                 </ul>

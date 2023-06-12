@@ -4,6 +4,7 @@ import img1 from '../../assets/images/students/sabbir.jpeg';
 import img2 from '../../assets/images/students/img2.webp';
 import img3 from '../../assets/images/students/img3.jpeg';
 import { FaQuoteRight } from 'react-icons/fa';
+import Typewriter from 'typewriter-effect';
 
 const Review = () => {
 
@@ -46,7 +47,16 @@ const Review = () => {
     return (
         <div className="my-12 py-5 bg-[#030303f6]">
             <div className="text-center mt-5">
-                <h1 className="text-4xl text-white">Our Happy <span className="text-[#E80040]">Students</span> says</h1>
+                <h1 className="text-4xl bg-gradient-to-r from-[#FFFFFF] via-[#E80040] to-[#FFFFFF] text-transparent bg-clip-text">
+                <Typewriter
+                        options={{
+                            strings: ['Our Happy Students says'],
+                            autoStart: true,
+                            loop: true,
+                            deleteSpeed: 'natural',
+                        }}
+                    />
+                </h1>
             </div>
             <div ref={sliderRef} className="keen-slider mt-5">
                 <div className="keen-slider__slide number-slide1">
