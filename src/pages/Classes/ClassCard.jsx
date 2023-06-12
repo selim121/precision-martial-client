@@ -17,8 +17,8 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
     const { photo, name, className, seats, price } = cls;
     const navigate = useNavigate();
     const location = useLocation();
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
 
     const isDisabled = enrolledClasses.some(singleClass => singleClass.id === cls._id);
 
@@ -66,7 +66,7 @@ const ClassCard = ({ cls, enrolledClasses, refetch }) => {
     return (
         <>
             {
-                (isDisabled || seats < 0 || isAdmin || isInstructor) ?
+                (isDisabled || seats < 0 || isAdmin || isInstructor || isAdminLoading || isInstructorLoading) ?
                     <div data-aos="zoom-in-up"
                     data-aos-duration="2000"
                         className="mx-auto">

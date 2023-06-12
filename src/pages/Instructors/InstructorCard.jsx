@@ -4,7 +4,6 @@ import { AiOutlineMail } from 'react-icons/ai';
 const InstructorCard = ({instructor}) => {
 
     const {name, email, photo} = instructor;
-    console.log(instructor);
 
     return (
         <div data-aos="zoom-in" data-aos-duration="2000"

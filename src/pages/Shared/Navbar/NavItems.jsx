@@ -41,7 +41,7 @@ const NavItems = () => {
     return (
         <div className='relative me-5'>
             <div className='flex flex-row items-center gap-3'>
-                <NavLink exact to="/" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
+                <NavLink to="/" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
                     Home
                 </NavLink>
                 <NavLink to="/instructors" className="hidden md:block active-link hover:text-[#E80040] hover:rounded-lg hover:bg-[#e4dbdb] px-2.5 py-1.5" onClick={() => setIsOpen(false)}>
