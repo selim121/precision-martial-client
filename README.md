@@ -14,8 +14,6 @@
 
 - Admin Approval System: Implement an admin approval system for classes added by instructors. When an instructor adds a new class, it goes through an approval process by the admin, who can review and either approve or deny the class based on specific criteria.
 
-- Admin Approval System: Implement an admin approval system for classes added by instructors. When an instructor adds a new class, it goes through an approval process by the admin, who can review and either approve or deny the class based on specific criteria.
-
 # Live link:  https://precision-martial.web.app/
 # Technologies
 ## Frontend:
